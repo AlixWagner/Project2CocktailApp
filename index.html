@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- HTML:
-    form - Select Input(Different Alcohols)
-    submit button - Give Me My Cocktail -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>What Cocktail Should I Make?</title>
+    </head>
+    <body>
+        <main>
+            <header>
+                <h1>What Cocktail Should I Make?</h1>
+                <img
+                    src="https://images.unsplash.com/photo-1611873027887-19a588803816?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
+                    alt="#"
+                />
+            </header>
 
-</body>
+            <label for="alcohol">Got an alcohol of choice?</label>
+
+            <select name="alcohol" id="alcohol-select">
+                <option value="">Choose your booze</option>
+                <option value="bourbon">Bourbon</option>
+                <option value="brandy">Brandy</option>
+                <option value="cognac">Cognac</option>
+                <option value="gin">Gin</option>
+                <option value="rum">Rum</option>
+                <option value="scotch">Scotch</option>
+                <option value="tequila">Tequila</option>
+                <option value="triplesec">Triple Sec</option>
+                <option value="vodka">Vodka</option>
+                <option value="whiskey">Whiskey</option>
+            </select>
+
+            <!--not sure about the toggle, for now made into a "checkbox"-->
+
+            <div>
+                <input
+                    type="checkbox"
+                    id="non-alcoholic"
+                    name="non-alcoholic"
+                />
+                <label for="non-alcoholic">Non-alcoholic</label>
+            </div>
+
+            <div class="submit-container">
+                <input type="submit" value="Tell Me!" />
+            </div>
+
+            <section class="results">
+                <!-- dynamic results will be added here -->
+            </section>
+        </main>
+        <script src="javascript/app.js"></script>
+    </body>
 </html>
