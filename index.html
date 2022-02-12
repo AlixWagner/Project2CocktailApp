@@ -9,47 +9,74 @@
     </head>
     <body>
         <header>
-            <h1>What Cocktail Should I Make?</h1>
-            <img
-                src="https://images.unsplash.com/photo-1611873027887-19a588803816?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
-                alt="#"
-            />
-            <form>
-                <label for="alcohol">Got an alcohol of choice?</label>
-
-                <select name="alcohol" id="alcohol-select">
-                    <option value="">Choose your booze</option>
-                    <option value="bourbon">Bourbon</option>
-                    <option value="brandy">Brandy</option>
-                    <option value="cognac">Cognac</option>
-                    <option value="gin">Gin</option>
-                    <option value="rum">Rum</option>
-                    <option value="scotch">Scotch</option>
-                    <option value="tequila">Tequila</option>
-                    <option value="triplesec">Triple Sec</option>
-                    <option value="vodka">Vodka</option>
-                    <option value="whiskey">Whiskey</option>
-                </select>
-            </form>
+            <div class="wrapper">
+                <!-- Alt cocktail image option -->
+                <!-- Can change the colours of the cocktail image depending on our colour palette for the app: -->
+                <img class="headerImage"
+                    src="./styles/assets/cocktailImage.svg" 
+                    alt="A vector image of a cute sparkly orange cocktail in a soft blue glass" 
+                />
+                <div class="cocktailForm">
+                    <h1>What Cocktail Should I Make?</h1>
+                    <form>
+                        <label for="alcohol">Got an alcohol of choice?</label>
+                    
+                        <select name="alcohol" id="alcohol-select">
+                            <option value="">Choose your booze</option>
+                            <option value="bourbon">Bourbon</option>
+                            <option value="brandy">Brandy</option>
+                            <option value="cognac">Cognac</option>
+                            <option value="gin">Gin</option>
+                            <option value="rum">Rum</option>
+                            <option value="scotch">Scotch</option>
+                            <option value="tequila">Tequila</option>
+                            <option value="triplesec">Triple Sec</option>
+                            <option value="vodka">Vodka</option>
+                            <option value="whiskey">Whiskey</option>
+                        </select>
+                        <!--not sure about the toggle, for now made into a "checkbox"-->
+                        <div>
+                            <input type="checkbox" id="non-alcoholic" name="non-alcoholic" />
+                            <label for="non-alcoholic">Non-alcoholic</label>
+                        </div>
+                    
+                        <div class="submit-container">
+                            <input class="submit" type="submit" value="Tell Me!"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </header>
         <main>
-            <!--not sure about the toggle, for now made into a "checkbox"-->
-
-            <div>
-                <input
-                    type="checkbox"
-                    id="non-alcoholic"
-                    name="non-alcoholic"
-                />
-                <label for="non-alcoholic">Non-alcoholic</label>
-            </div>
-
-            <div class="submit-container">
-                <input type="submit" value="Tell Me!" />
-            </div>
-
             <section class="results">
-                <!-- dynamic results will be added here -->
+                <h2><!-- dynamic results will be added here --></h2>
+                <!-- .buttonContainer will be hidden when .reveal button is pressed: -->
+                <div class="buttonContainer">
+                    <button class="reveal">Let's Make It!</button>
+                    <button class="randomize">That's Not It...</button>
+                </div>               
+            </section>
+            <!-- .recipe section will be revealed when .reveal button is pressed: -->
+            <section class="recipe">
+                <div class="drinkImage">
+                    <!-- strImageSource will be appended here (.appendChild) -->
+                </div>
+                <!-- .recipeContainer div will just be for styling purposes: -->
+                <div class="recipeContainer">
+                    <div class="ingredients">
+                        <h4>Ingredients</h4>
+                        <ul class="ingredientList">
+                            <!-- lis will be appended here: -->
+                            <!-- `<span class="measurements">${strMeasureVariable}</span> ${strIngredientVariable}` -->
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Instructions</h4>
+                        <p class="instructionList">
+                            <!-- strInstructions will be inserted here using .innerText -->
+                        </p>
+                    </div>
+                </div>
             </section>
         </main>
         <script src="javascript/app.js"></script>
