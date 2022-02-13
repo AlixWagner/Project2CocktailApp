@@ -268,3 +268,42 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+body {
+  background-color: #2f3b4b;
+}
+
+header .wrapper {
+  width: 90%;
+  max-width: 1250px;
+  margin: 40px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header .wrapper .imageContainer {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+  margin-right: -12px;
+}
+header .wrapper .cocktailForm {
+  width: calc(65% + 12px);
+}
+header .wrapper .cocktailForm h1 {
+  margin: 0;
+  padding-top: 24px;
+  text-indent: 10px;
+  font-family: "Bad Script", cursive;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 1.3;
+  color: #fd829d;
+  text-shadow: 3px 2px #68899c;
+}
+header .wrapper .cocktailForm .submit {
+  border: none;
+  color: #2f3b4b;
+  font-size: clamp(1rem, 3vw, 3rem);
+  background-color: #b9d2e2;
+  border-radius: 50px;
+  padding: 10px 36px;
+}
