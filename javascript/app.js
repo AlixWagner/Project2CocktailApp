@@ -111,7 +111,7 @@ cocktailApp.tellMeButton.addEventListener("click", function (event) {
             });
     }
     console.log('beepboop');
-});
+})
 
 cocktailApp.revealButton.addEventListener("click", function () {
     fetch(cocktailApp.recipeUrl)
