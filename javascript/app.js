@@ -118,17 +118,18 @@ cocktailApp.chooseDrink = function (event) {
                 });
             });
     };
+    cocktailApp.resetRecipeContainer();
+};
 
-    // Erase previous ingredients and instructions
-    document.querySelector('.instructionList').textContent = "";
+cocktailApp.resetRecipeContainer = function() {
+   document.querySelector('.instructionList').textContent = "";
     const ingredientList = document.querySelector(".ingredientList");
 
     while (ingredientList.firstChild) {
         ingredientList.firstChild.remove()
     }
 
-};
-
+}
 
 // eventListeners for all our buttons:
 cocktailApp.tellMeButton.addEventListener("click", cocktailApp.chooseDrink);
@@ -172,12 +173,9 @@ cocktailApp.revealButton.addEventListener("click", function () {
             document.querySelector('.instructionList').textContent = drinkDetails.strInstructions;
             // print ingredients & measurements to page
 
-            const ingredientList = document.querySelector(".ingredientList");
+            cocktailApp.resetRecipeContainer();
 
-            // Reset the ingredient list
-            while (ingredientList.firstChild) {
-                ingredientList.firstChild.remove()
-            }
+            const ingredientList = document.querySelector(".ingredientList");
 
             cocktailApp.ingredients.forEach((ingredient, index) => {
                 const measurement = cocktailApp.measurements[index];
