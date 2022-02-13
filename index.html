@@ -40,7 +40,7 @@
                         </select>
                         <!--not sure about the toggle, for now made into a "checkbox"-->
                         <div>
-                            <input type="checkbox" id="non-alcoholic" name="non-alcoholic" />
+                            <input class="toggle" type="checkbox" id="non-alcoholic" name="non-alcoholic" />
                             <label for="non-alcoholic">Non-alcoholic</label>
                         </div>
                     
@@ -53,7 +53,7 @@
         </header>
         <main>
             <section class="results">
-                <h2><!-- dynamic results will be added here --></h2>
+                <h2 class="drinkName"><!-- dynamic results will be added here --></h2>
                 <!-- .buttonContainer will be hidden when .reveal button is pressed: -->
                 <div class="buttonContainer">
                     <button class="reveal">Let's Make It!</button>
@@ -77,7 +77,7 @@
                     <div class="instructions">
                         <h4>Instructions</h4>
                         <p class="instructionList">
-                            <!-- strInstructions will be inserted here using .innerText -->
+                            <!-- strInstructions will be inserted here using .textContent -->
                         </p>
                     </div>
                 </div>
