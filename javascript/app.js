@@ -78,10 +78,7 @@ cocktailApp.parseArray = function (baseArray, pushArray, inclusion, object) {
     });
 };
 
-
-
-// eventListeners for all our buttons:
-cocktailApp.tellMeButton.addEventListener("click", function (event) {
+cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
     const userAlcohol = document.querySelector("#alcohol-select").value;
     if (userAlcohol) {
@@ -121,8 +118,21 @@ cocktailApp.tellMeButton.addEventListener("click", function (event) {
                 });
             });
     };
-    // show results section
-})
+
+    // Erase previous ingredients and instructions
+    document.querySelector('.instructionList').textContent = "";
+    const ingredientList = document.querySelector(".ingredientList");
+
+    while (ingredientList.firstChild) {
+        ingredientList.firstChild.remove()
+    }
+
+};
+
+
+// eventListeners for all our buttons:
+cocktailApp.tellMeButton.addEventListener("click", cocktailApp.chooseDrink);
+cocktailApp.randomButton.addEventListener("click", cocktailApp.chooseDrink);
 
 cocktailApp.toggle.addEventListener("click", function() {
     // if :checked 
@@ -197,8 +207,3 @@ cocktailApp.revealButton.addEventListener("click", function () {
             // show recipe section
         });
 });
-
-// ADD EVENT LISTENER FOR RANDOMIZE BUTTON: 
-// Gives new drink based on current selections
-// CONSIDER: using a global scope drinksArray
-
