@@ -148,12 +148,48 @@ cocktailApp.revealButton.addEventListener("click", function () {
         .then((response) => {
             return response.json();
         }).then((jsonResult) => {
-            const newArray = Object.keys(jsonResult.drinks[0]);
+            const drinkDetails = jsonResult.drinks[0];
+            const newArray = Object.keys(drinkDetails);
             console.log(jsonResult.drinks[0]);
-            cocktailApp.parseArray(newArray, cocktailApp.ingredients, "strIngredient", jsonResult.drinks[0]);
-            cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", jsonResult.drinks[0]);
+
+            // Reset the ingredients and measurements arrays
+            cocktailApp.ingredients = [];
+            cocktailApp.measurements = [];
+
+            cocktailApp.parseArray(newArray, cocktailApp.ingredients, "strIngredient", drinkDetails);
+            cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", drinkDetails);
             // print instructions to page
+            document.querySelector('.instructionList').textContent = drinkDetails.strInstructions;
             // print ingredients & measurements to page
+
+            const ingredientList = document.querySelector(".ingredientList");
+
+            // Reset the ingredient list
+            while (ingredientList.firstChild) {
+                ingredientList.firstChild.remove()
+            }
+
+            cocktailApp.ingredients.forEach((ingredient, index) => {
+                const measurement = cocktailApp.measurements[index];
+
+                const listElement = document.createElement('li');
+
+                const measurementSpan = document.createElement('span');
+                measurementSpan.textContent = measurement;
+                measurementSpan.classList.add('measurements');
+
+                listElement.appendChild(measurementSpan);
+
+                const ingredientText = document.createTextNode(` ${ingredient}`);
+
+                listElement.appendChild(ingredientText);
+
+
+                // <li><span class="measurements">2 oz</span> Rum</li>
+
+                ingredientList.appendChild(listElement);
+            })
+
             console.log(cocktailApp.measurements);
             console.log(cocktailApp.ingredients);
 
