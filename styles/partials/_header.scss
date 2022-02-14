@@ -1,6 +1,3 @@
-body {
-    background-color: #2f3b4b;
-}
 header {
     .wrapper {
         width: 90%;
@@ -9,27 +6,15 @@ header {
         display: flex;
         .imageContainer {
             flex-basis: 35%;
+            padding-top: 20px;
             margin-right: -12px;
         }
         .cocktailForm {
             width: calc(65% + 12px);
             h1 {
-                margin: 0;
                 padding-top: 24px;
                 text-indent: 10px;
-                font-family: 'Bad Script', cursive;
-                font-size:  clamp(3rem, 8vw, 8rem);
-                line-height: 1.3;
-                color: #fd829d;
-                text-shadow: 3px 2px rgb(104, 137, 156);
-            }
-            .submit {
-                border: none; 
-                color:#2f3b4b;
-                font-size: clamp(1rem, 3vw, 3rem);
-                background-color: #b9d2e2;
-                border-radius: 50px;
-                padding: 10px 36px;
+                text-shadow: 3px 2px $secondary;
             }
         }
     }

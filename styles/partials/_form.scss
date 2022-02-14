@@ -1,0 +1,96 @@
+.formSection {
+    .alcoholSelection {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        min-width: 250px;
+        margin: 20px 0 0 0;
+        label {
+            color: $offWhite;
+        }
+        select {
+            margin: 20px 0;
+        }
+    }
+    .toggleBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .toggleDiv {
+            padding-bottom: 10px;
+        }
+        .toggleLabel{
+            cursor: pointer;
+            color: $offWhite;
+            line-height: 30px;
+            padding-left: 60px;
+            position: relative;
+            &::before{
+                content: "";
+                width: 50px;
+                height: 25px;
+                background-color: $quaternary;
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                border-radius: 100px;
+                transition: 0.2s;
+            };
+            &::after{
+                content: "";
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background-color: $offWhite;
+                position: absolute;
+                left: 4px;
+                bottom: 0;
+                transition: 0.3s;
+            }
+        }
+        [type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            &:checked + .toggleLabel::after {
+                left: 28px;
+            }
+            &:checked + .toggleLabel::before {
+                background: $accent;
+            }
+            &:checked {
+                &:active + .toggleLabel::after,
+                &:focus + .toggleLabel::after {
+                    background-color: $offWhite;
+                    box-shadow: 1px 1px 4px $quaternary;
+                }
+            }
+            &:active + .toggleLabel::after,
+            &:focus + .toggleLabel::after {
+                background-color: $accent;
+            }
+        }
+        .submitContainer {
+            margin-right: 120px;
+        }
+    }
+    .submit {
+                border: 2px solid $secondary; 
+                transition: transform 0.2s, box-shadow 0.2s;
+                color: $tertiary;
+                font-size: clamp(1rem, 3vw, 2rem);
+                background-color: $primary;
+                border-radius: 5px;
+                padding: 7px 36px;
+                box-shadow: 4px 4px 0px $accent;
+                &:hover, 
+                &:focus {
+                    box-shadow: 7px 7px 0px $accent;
+                    transform: translate(-3px, -3px);
+                }
+                &:active {
+                    transform: translate(3px, 3px);
+                    box-shadow: 1px 1px 0px $accent;
+                }
+            }
+}
+

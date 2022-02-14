@@ -1,0 +1,38 @@
+body {
+    background-color: #2f3b4b;
+}
+main {
+    .wrapper {
+        width: 80%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
+.results {
+    .buttonContainer {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    button {
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-radius: 5px;
+        padding: 7px 36px;
+        border: 2px solid $secondary; 
+        &.reveal {
+            background-color: $accent;
+        }
+        &.randomize {
+            background-color: $offWhite;
+        }
+        &:hover, 
+        &:focus {
+            box-shadow: 3px 3px 0px $secondary;
+            transform: translate(-3px, -3px);
+        }
+        &:active {
+            transform: translate(0px, 0px);
+            box-shadow: 0px 0px 0px $accent;
+        }
+    }
+}
