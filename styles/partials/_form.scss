@@ -1,0 +1,98 @@
+.formSection {
+    .alcoholSelection {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        min-width: 250px;
+        margin: 20px 0 0 0;
+        label {
+            color: $offWhite;
+            font-size: 1rem;
+        }
+        select {
+            margin: 20px 0;
+        }
+    }
+    .toggleBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .toggleDiv {
+            padding-bottom: 10px;
+        }
+        .toggleLabel{
+            cursor: pointer;
+            color: $offWhite;
+            font-size: 1rem;
+            line-height: 30px;
+            padding-left: 60px;
+            position: relative;
+            &::before{
+                content: "";
+                width: 50px;
+                height: 25px;
+                background-color: #23293b;
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                border-radius: 100px;
+                transition: 0.2s;
+            };
+            &::after{
+                content: "";
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background-color: $offWhite;
+                position: absolute;
+                left: 4px;
+                bottom: 0;
+                transition: 0.3s;
+            }
+        }
+        [type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            &:checked + .toggleLabel::after {
+                left: 28px;
+            }
+            &:checked + .toggleLabel::before {
+                background: $accent;
+            }
+            &:checked {
+                &:active + .toggleLabel::after,
+                &:focus + .toggleLabel::after {
+                    background-color: $offWhite;
+                    box-shadow: 1px 1px 4px #23293b;
+                }
+            }
+            &:active + .toggleLabel::after,
+            &:focus + .toggleLabel::after {
+                background-color: $accent;
+            }
+        }
+        .submitContainer {
+            margin-right: 100px;
+        }
+    }
+    .submit {
+                border: none; 
+                transition: transform 0.2s, box-shadow 0.2s;
+                color:#2f3b4b;
+                font-size: clamp(1rem, 3vw, 2rem);
+                background-color: #b7cedb;
+                border-radius: 5px;
+                padding: 7px 36px;
+                box-shadow: 4px 4px 0px $accent;
+                &:hover, 
+                &:focus {
+                    box-shadow: 7px 7px 0px $accent;
+                    transform: translate(-3px, -3px);
+                }
+                &:active {
+                    transform: translate(3px, 3px);
+                    box-shadow: 1px 1px 0px $accent;
+                }
+            }
+}
+

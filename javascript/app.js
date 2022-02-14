@@ -63,7 +63,7 @@ cocktailApp.measurements = [];
 cocktailApp.tellMeButton = document.querySelector(".submit");
 cocktailApp.revealButton = document.querySelector(".reveal");
 cocktailApp.randomButton = document.querySelector(".randomize");
-cocktailApp.alcoholSelector = document.querySelector("#alcohol-select");
+cocktailApp.alcoholSelector = document.querySelector("#alcoholSelect");
 cocktailApp.toggle = document.querySelector(".toggle");
 cocktailApp.drinkName = document.querySelector(".drinkName");
 
@@ -83,7 +83,7 @@ cocktailApp.parseArray = function (baseArray, pushArray, inclusion, object) {
 // eventListeners for all our buttons:
 cocktailApp.tellMeButton.addEventListener("click", function (event) {
     event.preventDefault();
-    const userAlcohol = document.querySelector("#alcohol-select").value;
+    const userAlcohol = cocktailApp.alcoholSelector.value;
     if (userAlcohol) {
         cocktailApp.alcoholUrl.search = new URLSearchParams({
             i: userAlcohol

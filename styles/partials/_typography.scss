@@ -1,0 +1,10 @@
+html {
+    font-size: 125%;
+}
+
+
+h1 {
+    font-family: $headerFont;
+    font-size:  clamp(2rem, 8vw, 6rem);
+    line-height: 1.3;
+}

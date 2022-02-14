@@ -22,66 +22,72 @@
                 </div>
                 <div class="cocktailForm">
                     <h1>What Cocktail Should I Make?</h1>
-                    <form>
-                        <label for="alcohol">Got an alcohol of choice?</label>
-                    
-                        <select name="alcohol" id="alcohol-select">
-                            <option value="">Choose your booze</option>
-                            <option value="bourbon">Bourbon</option>
-                            <option value="brandy">Brandy</option>
-                            <option value="cognac">Cognac</option>
-                            <option value="gin">Gin</option>
-                            <option value="rum">Rum</option>
-                            <option value="scotch">Scotch</option>
-                            <option value="tequila">Tequila</option>
-                            <option value="triplesec">Triple Sec</option>
-                            <option value="vodka">Vodka</option>
-                            <option value="whiskey">Whiskey</option>
-                        </select>
-                        <!--not sure about the toggle, for now made into a "checkbox"-->
-                        <div>
-                            <input class="toggle" type="checkbox" id="non-alcoholic" name="non-alcoholic" />
-                            <label for="non-alcoholic">Non-alcoholic</label>
+                    <form class="formSection">
+                        <div class="alcoholSelection">
+                            <label for="alcohol">Got an alcohol of choice?</label>
+                            <select name="alcohol" id="alcoholSelect">
+                                <option value="">Choose your booze</option>
+                                <option value="bourbon">Bourbon</option>
+                                <option value="brandy">Brandy</option>
+                                <option value="cognac">Cognac</option>
+                                <option value="gin">Gin</option>
+                                <option value="rum">Rum</option>
+                                <option value="scotch">Scotch</option>
+                                <option value="tequila">Tequila</option>
+                                <option value="triplesec">Triple Sec</option>
+                                <option value="vodka">Vodka</option>
+                                <option value="whiskey">Whiskey</option>
+                            </select>
                         </div>
-                    
-                        <div class="submit-container">
-                            <input class="submit" type="submit" value="Tell Me!"/>
+                        <!--not sure about the toggle, for now made into a "checkbox"-->
+                        <div class="toggleBox">
+                            <div class="toggleDiv">
+                                <input class="toggle" type="checkbox" id="non-alcoholic"
+                                    name="non-alcoholic" />
+                                <label class="toggleLabel" for="non-alcoholic">Non-alcoholic</label>
+                            </div>
+                            
+                            <div class="submitContainer">
+                                <input class="submit" type="submit" value="Tell Me!" />
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </header>
         <main>
-            <section class="results">
-                <h2 class="drinkName"><!-- dynamic results will be added here --></h2>
-                <!-- .buttonContainer will be hidden when .reveal button is pressed: -->
-                <div class="buttonContainer">
-                    <button class="reveal">Let's Make It!</button>
-                    <button class="randomize">That's Not It...</button>
-                </div>               
-            </section>
-            <!-- .recipe section will be revealed when .reveal button is pressed: -->
-            <section class="recipe">
-                <div class="drinkImage">
-                    <!-- strImageSource will be appended here (.appendChild) -->
-                </div>
-                <!-- .recipeContainer div will just be for styling purposes: -->
-                <div class="recipeContainer">
-                    <div class="ingredients">
-                        <h4>Ingredients</h4>
-                        <ul class="ingredientList">
-                            <!-- lis will be appended here: -->
-                            <!-- `<span class="measurements">${strMeasureVariable}</span> ${strIngredientVariable}` -->
-                        </ul>
+            <div class ="wrapper">
+                <section class="results">
+                    <h2 class="drinkName"><!-- dynamic results will be added here --></h2>
+                    <!-- .buttonContainer will be hidden when .reveal button is pressed: -->
+                    <div class="buttonContainer">
+                        <button class="reveal">Let's Make It!</button>
+                        <button class="randomize">That's Not It...</button>
+                    </div>               
+                </section>
+                <!-- .recipe section will be revealed when .reveal button is pressed: -->
+                <section class="recipe">
+                    <div class="drinkImage">
+                        <!-- strImageSource will be appended here (.appendChild) -->
                     </div>
-                    <div class="instructions">
-                        <h4>Instructions</h4>
-                        <p class="instructionList">
-                            <!-- strInstructions will be inserted here using .textContent -->
-                        </p>
+                    <!-- .recipeContainer div will just be for styling purposes: -->
+                    <div class="recipeContainer">
+                        <div class="ingredients">
+                            <h4>Ingredients</h4>
+                            <ul class="ingredientList">
+                                <!-- lis will be appended here: -->
+                                <!-- `<span class="measurements">${strMeasureVariable}</span> ${strIngredientVariable}` -->
+                            </ul>
+                        </div>
+                        <div class="instructions">
+                            <h4>Instructions</h4>
+                            <p class="instructionList">
+                                <!-- strInstructions will be inserted here using .textContent -->
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </main>
         <script src="javascript/app.js"></script>
     </body>
