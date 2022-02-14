@@ -78,10 +78,7 @@ cocktailApp.parseArray = function (baseArray, pushArray, inclusion, object) {
     });
 };
 
-
-
-// eventListeners for all our buttons:
-cocktailApp.tellMeButton.addEventListener("click", function (event) {
+cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
     const userAlcohol = cocktailApp.alcoholSelector.value;
     if (userAlcohol) {
@@ -121,8 +118,22 @@ cocktailApp.tellMeButton.addEventListener("click", function (event) {
                 });
             });
     };
-    // show results section
-})
+    cocktailApp.resetRecipeContainer();
+};
+
+cocktailApp.resetRecipeContainer = function() {
+   document.querySelector('.instructionList').textContent = "";
+    const ingredientList = document.querySelector(".ingredientList");
+
+    while (ingredientList.firstChild) {
+        ingredientList.firstChild.remove()
+    }
+
+}
+
+// eventListeners for all our buttons:
+cocktailApp.tellMeButton.addEventListener("click", cocktailApp.chooseDrink);
+cocktailApp.randomButton.addEventListener("click", cocktailApp.chooseDrink);
 
 cocktailApp.toggle.addEventListener("click", function() {
     // if :checked 
@@ -148,12 +159,45 @@ cocktailApp.revealButton.addEventListener("click", function () {
         .then((response) => {
             return response.json();
         }).then((jsonResult) => {
-            const newArray = Object.keys(jsonResult.drinks[0]);
+            const drinkDetails = jsonResult.drinks[0];
+            const newArray = Object.keys(drinkDetails);
             console.log(jsonResult.drinks[0]);
-            cocktailApp.parseArray(newArray, cocktailApp.ingredients, "strIngredient", jsonResult.drinks[0]);
-            cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", jsonResult.drinks[0]);
+
+            // Reset the ingredients and measurements arrays
+            cocktailApp.ingredients = [];
+            cocktailApp.measurements = [];
+
+            cocktailApp.parseArray(newArray, cocktailApp.ingredients, "strIngredient", drinkDetails);
+            cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", drinkDetails);
             // print instructions to page
+            document.querySelector('.instructionList').textContent = drinkDetails.strInstructions;
             // print ingredients & measurements to page
+
+            cocktailApp.resetRecipeContainer();
+
+            const ingredientList = document.querySelector(".ingredientList");
+
+            cocktailApp.ingredients.forEach((ingredient, index) => {
+                const measurement = cocktailApp.measurements[index];
+
+                const listElement = document.createElement('li');
+
+                const measurementSpan = document.createElement('span');
+                measurementSpan.textContent = measurement;
+                measurementSpan.classList.add('measurements');
+
+                listElement.appendChild(measurementSpan);
+
+                const ingredientText = document.createTextNode(` ${ingredient}`);
+
+                listElement.appendChild(ingredientText);
+
+
+                // <li><span class="measurements">2 oz</span> Rum</li>
+
+                ingredientList.appendChild(listElement);
+            })
+
             console.log(cocktailApp.measurements);
             console.log(cocktailApp.ingredients);
 
@@ -161,8 +205,3 @@ cocktailApp.revealButton.addEventListener("click", function () {
             // show recipe section
         });
 });
-
-// ADD EVENT LISTENER FOR RANDOMIZE BUTTON: 
-// Gives new drink based on current selections
-// CONSIDER: using a global scope drinksArray
-
