@@ -7,7 +7,6 @@
         margin: 20px 0 0 0;
         label {
             color: $offWhite;
-            font-size: 1rem;
         }
         select {
             margin: 20px 0;
@@ -23,7 +22,6 @@
         .toggleLabel{
             cursor: pointer;
             color: $offWhite;
-            font-size: 1rem;
             line-height: 30px;
             padding-left: 60px;
             position: relative;
@@ -31,7 +29,7 @@
                 content: "";
                 width: 50px;
                 height: 25px;
-                background-color: #23293b;
+                background-color: $quaternary;
                 position: absolute;
                 left: 0;
                 bottom: -4px;
@@ -63,7 +61,7 @@
                 &:active + .toggleLabel::after,
                 &:focus + .toggleLabel::after {
                     background-color: $offWhite;
-                    box-shadow: 1px 1px 4px #23293b;
+                    box-shadow: 1px 1px 4px $quaternary;
                 }
             }
             &:active + .toggleLabel::after,
@@ -72,15 +70,15 @@
             }
         }
         .submitContainer {
-            margin-right: 100px;
+            margin-right: 120px;
         }
     }
     .submit {
-                border: none; 
+                border: 2px solid $secondary; 
                 transition: transform 0.2s, box-shadow 0.2s;
-                color:#2f3b4b;
+                color: $tertiary;
                 font-size: clamp(1rem, 3vw, 2rem);
-                background-color: #b7cedb;
+                background-color: $primary;
                 border-radius: 5px;
                 padding: 7px 36px;
                 box-shadow: 4px 4px 0px $accent;
