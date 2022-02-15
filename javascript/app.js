@@ -202,6 +202,8 @@ cocktailApp.revealButton.addEventListener("click", function () {
                 // <li><span class="measurements">2 oz</span> Rum</li>
                 ingredientList.appendChild(listElement);
             })
+            // TimeOut for styling purposes ---
+            // Allows button container to leave page before instructions load in to avoid content jumping on the page
             setTimeout(function() {
                 cocktailApp.fadeIn(cocktailApp.recipeContainer, 10);
                 cocktailApp.fadeIn(cocktailApp.instructionList, 15);
