@@ -31,3 +31,27 @@ label {
         font-size: 0.8rem;
     }
 }
+
+//Recipe section:
+li,
+p {
+    color: $tertiary;
+}
+
+.measurements {
+    font-weight: bold;
+}
+
+.recipeContainer h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem; 
+}
+
+//footer section 
+footer {
+    p,
+    a {
+    color:$offWhite;
+    font-size: 0.8rem; 
+    }
+}
