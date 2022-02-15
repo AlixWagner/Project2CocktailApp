@@ -409,6 +409,7 @@ main .wrapper {
 
 ul li {
   list-style: none;
+  padding-bottom: 0.5rem;
 }
 
 footer {
