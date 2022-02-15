@@ -8,7 +8,26 @@ main {
         margin: 0 auto;
     }
 }
+.recipe {
+    display: none;
+    .recipeContainer {
+        .ingredients {
+            .ingredientList {
+                opacity: 0;
+            }
+        }
+        .instructions {
+            .instructionList {
+                opacity: 0;
+            }
+        }
+    }
+}
 .results {
+    display: none;
+    h2 {
+        opacity: 0;
+    }
     .buttonContainer {
         display: flex;
         flex-direction: row-reverse;
