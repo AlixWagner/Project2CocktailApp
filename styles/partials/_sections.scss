@@ -55,3 +55,36 @@ main {
         }
     }
 }
+
+//Results section
+.drinkName{
+    padding: 1rem; 
+}
+
+// Recipe section
+.recipe {
+    padding: 1rem; 
+    background: $primary;
+    box-shadow: 5px 5px 0px $accent;
+    border-radius: 5px; 
+    p {
+        margin-bottom: 0; 
+    }
+}
+
+ul li {
+    list-style: none;
+}
+
+//footer section
+footer {
+    text-align: center;
+    p {
+        margin: 0;
+    }
+    img{
+        display:inline-block; 
+        width: 3rem; 
+        margin-top: 1rem; 
+    }
+}
