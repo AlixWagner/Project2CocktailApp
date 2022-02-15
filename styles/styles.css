@@ -316,6 +316,22 @@ main .wrapper {
   margin: 0 auto;
 }
 
+.recipe {
+  display: none;
+}
+.recipe .recipeContainer .ingredients .ingredientList {
+  opacity: 0;
+}
+.recipe .recipeContainer .instructions .instructionList {
+  opacity: 0;
+}
+
+.results {
+  display: none;
+}
+.results h2 {
+  opacity: 0;
+}
 .results .buttonContainer {
   display: -webkit-box;
   display: -ms-flexbox;

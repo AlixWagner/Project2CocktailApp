@@ -1,43 +1,3 @@
-// JS -
-
-//     Create an app object(cocktailConnoisseur)
-
-// Initialize preset data in the dedicated properties
-// apiURL
-// apiKey
-
-// eventhandler submit button:
-//     prevent default
-//     get input from alcohol input
-//     use input to create search parameters and Fetch from API
-//     take returned API response object
-//     create JSON object
-//     Use function to randomly select one returned Drink from the list
-//     Access JSON object for cocktail
-//         id
-//         name
-//     print returned data to page
-
-// eventhandler try again button:
-//     prevent default
-//     Use function to randomly select another returned Drink from the list
-//     Access JSON object for cocktail
-//         id
-//         name
-//     print returned data to page
-
-// eventhandler Make This Drink button:
-//     prevent default
-//     get id from selected drink
-//     use input to create search parameters and Fetch from API
-//     take returned API response object
-//     create JSON object
-//     Access JSON object for cocktail
-//         ingredients
-//         measurements
-//         instructions
-//     print returned data to page
-
 // Create an init method 
 
 // App Object:
@@ -64,6 +24,11 @@ cocktailApp.measurements = [];
 cocktailApp.tellMeButton = document.querySelector(".submit");
 cocktailApp.revealButton = document.querySelector(".reveal");
 cocktailApp.randomButton = document.querySelector(".randomize");
+cocktailApp.resultsContainer = document.querySelector(".results");
+cocktailApp.buttonContainer = document.querySelector(".buttonContainer");
+cocktailApp.recipeContainer = document.querySelector(".recipe");
+cocktailApp.ingredientList = document.querySelector(".ingredientList");
+cocktailApp.instructionList = document.querySelector(".instructionList");
 cocktailApp.alcoholSelector = document.querySelector("#alcoholSelect");
 cocktailApp.toggle = document.querySelector(".toggle");
 cocktailApp.drinkName = document.querySelector(".drinkName");
@@ -87,13 +52,45 @@ cocktailApp.resetRecipeContainer = function () {
     while (ingredientList.firstChild) {
         ingredientList.firstChild.remove()
     }
+};
+// method to soften elements entry onto page:
+cocktailApp.fadeIn = function(element, interval) {  
+    let opacity = 0
+    element.style.opacity = opacity;
+    element.style.display = 'block';
+    const fade = setInterval(function () {
+        if (opacity >= 1) {
+            clearInterval(fade);
+        }
+        opacity = opacity + 0.1
+        element.style.opacity = opacity;
+    }, interval);
+};
+// method to soften elements entry onto page:
+cocktailApp.fadeOut = function (element, interval) {
+    let opacity = 1
+    element.style.opacity = opacity;
+    const fade = setInterval(function () {
+        if (opacity <= 0) {
+            clearInterval(fade);
+            element.style.display = 'none';
+        }
+        opacity = opacity - 0.1
+        element.style.opacity = opacity;
+    }, interval);
+};
 
-}
 
+// method to take user input and find a random drink:
 cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
+    cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
+    cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
+    cocktailApp.fadeOut(cocktailApp.instructionList, 5);
     const userAlcohol = cocktailApp.alcoholSelector.value;
+    // if user has selected an alcohol:
     if (userAlcohol) {
+        // add that alcohol as a search parameter
         cocktailApp.alcoholUrl.search = new URLSearchParams({
             i: userAlcohol
         });
@@ -102,35 +99,45 @@ cocktailApp.chooseDrink = function (event) {
                 return response.json();
             }).then((jsonResult) => {
                 cocktailApp.drinksArray = [];
+                // create an array from returned json
                 cocktailApp.drinksArray = Array.from(jsonResult.drinks);
+                // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
-                console.log(cocktailApp.drinksArray);
                 // print drink name to page:
                 cocktailApp.drinkName.textContent = randomDrink.strDrink;
                 cocktailApp.currentDrink = randomDrink.idDrink;
+                cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
+                cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
+                cocktailApp.fadeIn(cocktailApp.drinkName, 20);
                 // adjust searchParams for current drink recipe:
                 cocktailApp.recipeUrl.search = new URLSearchParams({
                     i: cocktailApp.currentDrink
                 });
             });
-    } else {
+    } else { // if no alcohol was selected by the user:
         fetch(cocktailApp.currentUrl)
             .then((response) => {
                 return response.json();
             }).then((jsonResult) => {
                 cocktailApp.drinksArray = [];
+                // create an array from returned json
                 cocktailApp.drinksArray = Array.from(jsonResult.drinks);
+                // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
                 console.log(cocktailApp.drinksArray);
                 // print drink name to page:
                 cocktailApp.drinkName.textContent = randomDrink.strDrink;
                 cocktailApp.currentDrink = randomDrink.idDrink;
+                cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
+                cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
+                cocktailApp.fadeIn(cocktailApp.drinkName, 20);
                 // adjust searchParams for current drink recipe:
                 cocktailApp.recipeUrl.search = new URLSearchParams({
                     i: cocktailApp.currentDrink
                 });
             });
     };
+    // clear any recipe info currently open:
     cocktailApp.resetRecipeContainer();
 };
 
@@ -139,8 +146,11 @@ cocktailApp.tellMeButton.addEventListener("click", cocktailApp.chooseDrink);
 cocktailApp.randomButton.addEventListener("click", cocktailApp.chooseDrink);
 // eventListener for non-alcoholic toggle
 cocktailApp.toggle.addEventListener("click", function() {
+    cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
+    cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
+    cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
     if (cocktailApp.toggle.checked) {
-        console.log("yes");
         cocktailApp.currentUrl = cocktailApp.mocktailUrl;
         cocktailApp.alcoholSelector.disabled = true;
         // ensure that is any alcohol was selected it's unselected:
@@ -150,8 +160,17 @@ cocktailApp.toggle.addEventListener("click", function() {
         cocktailApp.alcoholSelector.disabled = false;
     }
 });
+// eventListener for alcohol selector:
+cocktailApp.alcoholSelector.addEventListener("click", function() {
+    cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
+    cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
+    cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
+})
 
+// eventListener for Let's Make This button:
 cocktailApp.revealButton.addEventListener("click", function () {
+    cocktailApp.fadeOut(cocktailApp.buttonContainer, 1);
     fetch(cocktailApp.recipeUrl)
         .then((response) => {
             return response.json();
@@ -183,6 +202,11 @@ cocktailApp.revealButton.addEventListener("click", function () {
                 // <li><span class="measurements">2 oz</span> Rum</li>
                 ingredientList.appendChild(listElement);
             })
+            setTimeout(function() {
+                cocktailApp.fadeIn(cocktailApp.recipeContainer, 10);
+                cocktailApp.fadeIn(cocktailApp.instructionList, 15);
+                cocktailApp.fadeIn(cocktailApp.ingredientList, 15);
+            }, 100)
             // hide buttonContainer
             // show recipe section
         });
