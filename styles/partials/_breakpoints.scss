@@ -1,1 +1,135 @@
 // breakpoint @1020px for header form
+@media (max-width:1020px) {
+    header {
+        .wrapper {
+            position: relative;
+            .imageContainer {
+                position: absolute;
+                width: 360px;
+                left: -20px;
+                bottom: -20px;
+                z-index: -10;
+            }
+            .cocktailForm {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                h1 {
+                    font-family: $headerFont;
+                    color: $secondAccent;
+                    font-size:  clamp(2rem, 13vw, 7rem);
+                    line-height: 1.3;
+                }
+            }
+        }
+    }
+    .formSection {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .alcoholSelection {
+            width: 60%;
+            margin-top: 40px;
+        }
+        .toggleBox {
+            margin-top: 100px;
+            flex-direction: column;
+            .toggleDiv {
+                padding-bottom: 20px;
+            }
+            .submitContainer {
+                margin-right: 0;
+                .submit {
+                    font-size: clamp(1.2rem, 6vw, 2rem);
+                }
+            }
+            .toggleLabel {
+                padding-left: 0;
+                padding-right: 60px;
+                &::before {
+                    right: 0;
+                    left: auto;
+                }
+                &::after {
+                    right: 28px;
+                    left: auto;
+                }
+            }
+            [type="checkbox"] {
+            &:checked + .toggleLabel::after {
+                left: auto;
+                right: 4px;
+            }
+        }
+        }
+    }
+}
+
+@media (max-width:900px) {
+    .formSection {
+        .alcoholSelection {
+            width: 50%;
+            margin-left: 0;
+        }
+    }
+}
+
+@media (max-width:700px) {
+    header {
+        .wrapper {
+            .imageContainer {
+                bottom: -80px;
+            }
+        }
+    }
+    .formSection {
+        .alcoholSelection {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 5px;
+        }
+        .toggleBox {
+            margin-top: 160px;
+        }
+        .submit {
+            border: 4px solid $secondary; 
+            box-shadow: none;
+            background-color: $accent;
+            cursor: pointer;
+            &:hover, 
+            &:focus {
+                box-shadow: none;
+                transform: none;
+            }
+            &:active {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+@media (max-width:560px) {
+    header {
+        .wrapper {
+            margin: 20px auto;
+            .imageContainer {
+                width: 300px;
+                bottom: 40px;
+            }
+        }
+    }
+    .formSection {
+        width: 100%;
+        .toggleBox {
+            flex-direction: column-reverse;
+            margin-top: 200px;
+        }
+        .toggleDiv {
+            margin-top: 30px;
+        }
+    }
+}

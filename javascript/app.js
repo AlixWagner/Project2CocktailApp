@@ -161,7 +161,7 @@ cocktailApp.toggle.addEventListener("click", function() {
     }
 });
 // eventListener for alcohol selector:
-cocktailApp.alcoholSelector.addEventListener("click", function() {
+cocktailApp.alcoholSelector.addEventListener("change", function() {
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
