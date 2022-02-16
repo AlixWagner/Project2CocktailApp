@@ -66,6 +66,11 @@
         }
         }
     }
+    .results {
+        .buttonContainer {
+            width: 80%;
+        }
+    }
 }
 
 @media (max-width:900px) {
@@ -110,6 +115,29 @@
             }
         }
     }
+    main {
+        .wrapper {
+            width: 85%;
+        }
+    }
+    .results {
+        margin-top: 90px;
+        .buttonContainer {
+            width: 100%;
+            button {
+                cursor: pointer;
+                &:hover, 
+                &:focus {
+                    box-shadow: none;
+                    transform: none;
+                }
+                &:active {
+                    transform: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width:560px) {
@@ -130,6 +158,24 @@
         }
         .toggleDiv {
             margin-top: 30px;
+        }
+    }
+    main {
+        .wrapper {
+            width: 90%;
+        }
+    }
+    .results {
+        margin-top: -20px;
+        .drinkName {
+            padding: 1rem 0;
+        }
+        .buttonContainer {
+            flex-direction: column;
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
         }
     }
 }
