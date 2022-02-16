@@ -52,6 +52,11 @@ cocktailApp.resetRecipeContainer = function () {
     while (ingredientList.firstChild) {
         ingredientList.firstChild.remove()
     }
+    // reset image preview
+    const imagePreview = document.querySelector('.drinkImage').firstChild;
+    if (imagePreview) {
+        imagePreview.remove();
+    }
 };
 // method to soften elements entry onto page:
 cocktailApp.fadeIn = function(element, interval) {  
@@ -188,6 +193,12 @@ cocktailApp.revealButton.addEventListener("click", function () {
             cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", drinkDetails);
             // reset recipe container content:
             cocktailApp.resetRecipeContainer();
+            // show image preview
+            const imagePreview = document.createElement('img');
+            imagePreview.setAttribute('src', `${drinkDetails.strDrinkThumb}/preview`)
+            document.querySelector('.drinkImage').appendChild(imagePreview);
+
+
             // print instructions to page
             document.querySelector('.instructionList').textContent = drinkDetails.strInstructions;
             // print ingredients & measurements to page
