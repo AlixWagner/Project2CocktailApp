@@ -52,6 +52,11 @@ cocktailApp.resetRecipeContainer = function () {
     while (ingredientList.firstChild) {
         ingredientList.firstChild.remove()
     }
+    // reset image preview
+    const imagePreview = document.querySelector('.drinkImage').firstChild;
+    if (imagePreview) {
+        imagePreview.remove();
+    }
 };
 // method to soften elements entry onto page:
 cocktailApp.fadeIn = function(element, interval) {  
