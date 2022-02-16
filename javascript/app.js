@@ -109,6 +109,7 @@ cocktailApp.chooseDrink = function (event) {
                 cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.drinkName, 20);
+                cocktailApp.drinkName.scrollIntoView({behavior: "smooth"});
                 // adjust searchParams for current drink recipe:
                 cocktailApp.recipeUrl.search = new URLSearchParams({
                     i: cocktailApp.currentDrink
@@ -131,6 +132,7 @@ cocktailApp.chooseDrink = function (event) {
                 cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.drinkName, 20);
+                cocktailApp.drinkName.scrollIntoView({ behavior: "smooth" });
                 // adjust searchParams for current drink recipe:
                 cocktailApp.recipeUrl.search = new URLSearchParams({
                     i: cocktailApp.currentDrink
@@ -208,6 +210,7 @@ cocktailApp.revealButton.addEventListener("click", function () {
                 cocktailApp.fadeIn(cocktailApp.recipeContainer, 10);
                 cocktailApp.fadeIn(cocktailApp.instructionList, 15);
                 cocktailApp.fadeIn(cocktailApp.ingredientList, 15);
+                cocktailApp.recipeContainer.scrollIntoView({ behavior: "smooth" });
             }, 100)
             // hide buttonContainer
             // show recipe section
