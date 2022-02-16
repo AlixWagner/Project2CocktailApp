@@ -186,6 +186,12 @@ cocktailApp.revealButton.addEventListener("click", function () {
             cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", drinkDetails);
             // reset recipe container content:
             cocktailApp.resetRecipeContainer();
+            // show image preview
+            const imagePreview = document.createElement('img');
+            imagePreview.setAttribute('src', `${drinkDetails.strDrinkThumb}/preview`)
+            document.querySelector('.drinkImage').appendChild(imagePreview);
+
+
             // print instructions to page
             document.querySelector('.instructionList').textContent = drinkDetails.strInstructions;
             // print ingredients & measurements to page
