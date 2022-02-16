@@ -75,23 +75,23 @@
         }
     }
     .submit {
-                border: 2px solid $secondary; 
-                transition: transform 0.2s, box-shadow 0.2s;
-                color: $tertiary;
-                font-size: clamp(1rem, 3vw, 2rem);
-                background-color: $primary;
-                border-radius: 5px;
-                padding: 7px 36px;
-                box-shadow: 4px 4px 0px $accent;
-                &:hover, 
-                &:focus {
-                    box-shadow: 7px 7px 0px $accent;
-                    transform: translate(-3px, -3px);
-                }
-                &:active {
-                    transform: translate(3px, 3px);
-                    box-shadow: 1px 1px 0px $accent;
-                }
-            }
+        border: 3px solid $secondary; 
+        transition: transform 0.2s, box-shadow 0.2s;
+        color: $tertiary;
+        font-size: clamp(1rem, 3vw, 2rem);
+        background-color: $primary;
+        border-radius: 5px;
+        padding: 7px 36px;
+        box-shadow: 4px 4px 0px $accent;
+        &:hover, 
+        &:focus {
+            box-shadow: 7px 7px 0px $accent;
+            transform: translate(-3px, -3px);
+        }
+        &:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px $accent;
+        }
+    }
 }
 
