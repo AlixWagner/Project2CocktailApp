@@ -5,7 +5,7 @@ const cocktailApp = {};
 // Setting up fetch API urls:
 // initial call by users drink choice:
 cocktailApp.alcoholUrl = new URL("https://www.thecocktaildb.com/api/json/v2/9973533/filter.php");
-cocktailApp.alcoholUrl.search - new URLSearchParams({});
+cocktailApp.alcoholUrl.search = new URLSearchParams({});
 // secondary call for the recipe: 
 cocktailApp.recipeUrl = new URL("https://www.thecocktaildb.com/api/json/v1/1/lookup.php");
 cocktailApp.recipeUrl.search = new URLSearchParams({});
