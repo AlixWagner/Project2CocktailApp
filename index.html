@@ -59,7 +59,15 @@
         <main>
             <div class ="wrapper">
                 <section class="results">
-                    <h2 class="drinkName"><!-- dynamic results will be added here --></h2>
+                    <div class="resultsContainer">
+                        <h2 class="drinkName">
+                            <!-- dynamic results will be added here -->
+                        </h2>
+                        <div class="drinkImage">
+                            <!-- strImageSource will be appended here (.appendChild) -->
+                        </div>
+                    </div>
+                    
                     <!-- .buttonContainer will be hidden when .reveal button is pressed: -->
                     <div class="buttonContainer">
                         <button class="reveal">Let's Make It!</button>
@@ -70,17 +78,12 @@
                 <section class="recipe">
                     <!-- .recipeContainer div will just be for styling purposes: -->
                     <div class="recipeContainer">
-                        <div class="flexContainer">
-                            <div class="drinkImage">
-                                <!-- strImageSource will be appended here (.appendChild) -->
-                            </div>
-                            <div class="ingredients">
-                                <h3>Ingredients</h3>
-                                <ul class="ingredientList">
-                                    <!-- lis will be appended here: -->
-                                    <!-- `<span class="measurements">${strMeasureVariable}</span> ${strIngredientVariable}` -->
-                                </ul>
-                            </div>
+                        <div class="ingredients">
+                            <h3>Ingredients</h3>
+                            <ul class="ingredientList">
+                                <!-- lis will be appended here: -->
+                                <!-- `<span class="measurements">${strMeasureVariable}</span> ${strIngredientVariable}` -->
+                            </ul>
                         </div>
                         <div class="instructions">
                             <h3>Instructions</h3>

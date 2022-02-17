@@ -346,7 +346,7 @@ ul li {
 
 .recipe {
   display: none;
-  padding: 40px;
+  padding: 1rem;
   background: #b7cedb;
   -webkit-box-shadow: 5px 5px 0px #e4ae5d;
           box-shadow: 5px 5px 0px #e4ae5d;
@@ -365,30 +365,37 @@ ul li {
 .recipe .recipeContainer .instructions .instructionList {
   opacity: 0;
 }
-.recipe .recipeContainer .flexContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.recipe .recipeContainer .flexContainer .drinkImage {
-  margin: 0 45px 40px 5px;
-}
-.recipe .recipeContainer .flexContainer .drinkImage img {
-  border-radius: 50%;
-  border: 4px solid #6a8ca9;
-}
 
 .results {
   display: none;
 }
-.results h2 {
+.results .resultsContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 30px;
+}
+.results .resultsContainer h2 {
   opacity: 0;
 }
+.results .resultsContainer .drinkImage {
+  height: 206px;
+  width: 206px;
+  margin-right: 20px;
+}
+.results .resultsContainer .drinkImage img {
+  border-radius: 50%;
+  border: 3px solid #6a8ca9;
+}
 .results .drinkName {
-  padding: 1rem;
+  padding: 20px 20px 20px 0;
   position: relative;
 }
 .results .drinkName::before {
@@ -741,21 +748,6 @@ header .wrapper .cocktailForm h1 {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-
-  .recipe .recipeContainer .flexContainer {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .recipe .recipeContainer .flexContainer .drinkImage {
-    margin: 5px 0 30px 0;
-    -ms-flex-item-align: center;
-        align-self: center;
-  }
 }
 @media (max-width: 560px) {
   header .wrapper {
@@ -800,12 +792,18 @@ header .wrapper .cocktailForm h1 {
     width: 100%;
     margin-bottom: 10px;
   }
-
-  .recipe {
-    padding: 30px;
+  .results .resultsContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 0;
   }
-  .recipe .recipeContainer .flexContainer .drinkImage {
-    margin: 0 0 30px 0;
+  .results .resultsContainer .drinkImage {
+    margin: 20px 0;
     -ms-flex-item-align: center;
         align-self: center;
   }
