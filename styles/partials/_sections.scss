@@ -7,13 +7,26 @@ main {
         max-width: 1100px;
         margin: 0 auto;
     }
+    min-height: 20vh;
+}
+ul li {
+    list-style: none;
 }
 .recipe {
     display: none;
+    padding: 1rem; 
+    background: $primary;
+    box-shadow: 5px 5px 0px $accent;
+    border-radius: 5px; 
+    p {
+        margin-bottom: 0; 
+    }
     .recipeContainer {
+        padding: 10px 0;
         .ingredients {
             .ingredientList {
                 opacity: 0;
+                padding: 0;
             }
         }
         .instructions {
@@ -25,19 +38,49 @@ main {
 }
 .results {
     display: none;
-    h2 {
-        opacity: 0;
+    .resultsContainer {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-bottom: 30px;
+        h2 {
+            opacity: 0;
+        }
+        .drinkImage {
+            height: 206px;
+            width: 206px;
+            margin-right: 20px;
+            img {
+                border-radius: 50%;
+                border: 3px solid $secondary;
+            }
+        }
+    }
+    .drinkName{
+        padding: 20px 20px 20px 0;
+        position: relative;
+        &::before {
+            position: absolute;
+            content: "Drink Name:";
+            font-family: $bodyFont;
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0;
+            top: 0;
+        }
     }
     .buttonContainer {
         display: flex;
         flex-direction: row-reverse;
-        justify-content: flex-end;
+        justify-content: space-between;
+        width: 60%;
     }
     button {
+        width: calc(50% - 10px);
         transition: transform 0.2s, box-shadow 0.2s;
         border-radius: 5px;
-        padding: 7px 36px;
-        border: 2px solid $secondary; 
+        padding: 7px;
+        border: 3px solid $secondary; 
         &.reveal {
             background-color: $accent;
         }

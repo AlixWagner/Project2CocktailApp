@@ -287,14 +287,15 @@ h1 {
 
 h2 {
   font-family: "Shadows Into Light Two", cursive;
-  color: #6a8ca9;
-  font-size: clamp(1.6rem, 5vw, 3.6rem);
+  color: #e6ebec;
+  font-size: clamp(1.8rem, 5vw, 3.6rem);
   letter-spacing: 0.2rem;
 }
 
 h3 {
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 600;
+  text-shadow: 2px 2px #6a8ca9;
   color: #e6ebec;
 }
 
@@ -330,17 +331,36 @@ body {
   background-color: #2f3b4b;
 }
 
+main {
+  min-height: 20vh;
+}
 main .wrapper {
   width: 80%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
+ul li {
+  list-style: none;
+}
+
 .recipe {
   display: none;
+  padding: 1rem;
+  background: #b7cedb;
+  -webkit-box-shadow: 5px 5px 0px #e4ae5d;
+          box-shadow: 5px 5px 0px #e4ae5d;
+  border-radius: 5px;
+}
+.recipe p {
+  margin-bottom: 0;
+}
+.recipe .recipeContainer {
+  padding: 10px 0;
 }
 .recipe .recipeContainer .ingredients .ingredientList {
   opacity: 0;
+  padding: 0;
 }
 .recipe .recipeContainer .instructions .instructionList {
   opacity: 0;
@@ -349,8 +369,43 @@ main .wrapper {
 .results {
   display: none;
 }
-.results h2 {
+.results .resultsContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 30px;
+}
+.results .resultsContainer h2 {
   opacity: 0;
+}
+.results .resultsContainer .drinkImage {
+  height: 206px;
+  width: 206px;
+  margin-right: 20px;
+}
+.results .resultsContainer .drinkImage img {
+  border-radius: 50%;
+  border: 3px solid #6a8ca9;
+}
+.results .drinkName {
+  padding: 20px 20px 20px 0;
+  position: relative;
+}
+.results .drinkName::before {
+  position: absolute;
+  content: "Drink Name:";
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  top: 0;
 }
 .results .buttonContainer {
   display: -webkit-box;
@@ -360,18 +415,20 @@ main .wrapper {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 60%;
 }
 .results button {
+  width: calc(50% - 10px);
   -webkit-transition: -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   transition: -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   transition: transform 0.2s, box-shadow 0.2s;
   transition: transform 0.2s, box-shadow 0.2s, -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   border-radius: 5px;
-  padding: 7px 36px;
-  border: 2px solid #6a8ca9;
+  padding: 7px;
+  border: 3px solid #6a8ca9;
 }
 .results button.reveal {
   background-color: #e4ae5d;
@@ -532,7 +589,7 @@ header .wrapper .cocktailForm h1 {
   margin-right: 120px;
 }
 .formSection .submit {
-  border: 2px solid #6a8ca9;
+  border: 3px solid #6a8ca9;
   -webkit-transition: -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   transition: -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -556,4 +613,218 @@ header .wrapper .cocktailForm h1 {
           transform: translate(3px, 3px);
   -webkit-box-shadow: 1px 1px 0px #e4ae5d;
           box-shadow: 1px 1px 0px #e4ae5d;
+}
+
+@media (max-width: 1020px) {
+  header .wrapper {
+    position: relative;
+  }
+  header .wrapper .imageContainer {
+    position: absolute;
+    width: 360px;
+    left: -20px;
+    bottom: -20px;
+    z-index: -10;
+  }
+  header .wrapper .cocktailForm {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  header .wrapper .cocktailForm h1 {
+    font-family: "Bad Script", cursive;
+    color: #fd829d;
+    font-size: clamp(1.9rem, 13vw, 7rem);
+    line-height: 1.3;
+  }
+
+  .formSection {
+    width: 90%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .formSection .alcoholSelection {
+    width: 60%;
+    margin-top: 40px;
+  }
+  .formSection .toggleBox {
+    margin-top: 100px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .formSection .toggleBox .toggleDiv {
+    padding-bottom: 20px;
+  }
+  .formSection .toggleBox .submitContainer {
+    margin-right: 0;
+  }
+  .formSection .toggleBox .submitContainer .submit {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+  }
+  .formSection .toggleBox .toggleLabel {
+    padding-left: 0;
+    padding-right: 60px;
+  }
+  .formSection .toggleBox .toggleLabel::before {
+    right: 0;
+    left: auto;
+  }
+  .formSection .toggleBox .toggleLabel::after {
+    right: 28px;
+    left: auto;
+  }
+  .formSection .toggleBox [type=checkbox]:checked + .toggleLabel::after {
+    left: auto;
+    right: 4px;
+  }
+
+  .results .buttonContainer {
+    width: 80%;
+  }
+}
+@media (max-width: 900px) {
+  .formSection .alcoholSelection {
+    width: 50%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 700px) {
+  header .wrapper .imageContainer {
+    bottom: -80px;
+  }
+  header .wrapper .cocktailForm h1 {
+    text-shadow: 2px 1px #6a8ca9;
+  }
+
+  .formSection .alcoholSelection {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  .formSection .toggleBox {
+    margin-top: 160px;
+  }
+  .formSection .submit {
+    border: 4px solid #6a8ca9;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background-color: #e4ae5d;
+    cursor: pointer;
+  }
+  .formSection .submit:hover, .formSection .submit:focus {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transform: none;
+            transform: none;
+  }
+  .formSection .submit:active {
+    -webkit-transform: none;
+            transform: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+
+  main .wrapper {
+    width: 85%;
+  }
+
+  .results {
+    margin-top: 90px;
+  }
+  .results .buttonContainer {
+    width: 100%;
+  }
+  .results .buttonContainer button {
+    cursor: pointer;
+  }
+  .results .buttonContainer button:hover, .results .buttonContainer button:focus {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transform: none;
+            transform: none;
+  }
+  .results .buttonContainer button:active {
+    -webkit-transform: none;
+            transform: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+@media (max-width: 560px) {
+  header .wrapper {
+    margin: 20px auto;
+  }
+  header .wrapper .imageContainer {
+    width: 300px;
+    bottom: 40px;
+  }
+
+  .formSection {
+    width: 100%;
+  }
+  .formSection .toggleBox {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    margin-top: 200px;
+  }
+  .formSection .toggleDiv {
+    margin-top: 30px;
+  }
+
+  main .wrapper {
+    width: 90%;
+  }
+
+  .results {
+    margin-top: -20px;
+  }
+  .results .drinkName {
+    padding: 1rem 0;
+  }
+  .results .buttonContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .results .buttonContainer button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .results .resultsContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 0;
+  }
+  .results .resultsContainer .drinkImage {
+    margin: 20px 0;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
 }
