@@ -243,7 +243,8 @@ cocktailApp.revealButton.addEventListener("click", function () {
         });
 });
 
-cocktailApp.searchButton.addEventListener("click", function () {
+cocktailApp.searchButton.addEventListener("click", function (e) {
+    e.preventDefault();
     const searchTerm = cocktailApp.searchInput.value;
     cocktailApp.searchUrl.search = new URLSearchParams({
         s: searchTerm
