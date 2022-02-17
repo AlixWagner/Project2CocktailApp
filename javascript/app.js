@@ -25,6 +25,7 @@ cocktailApp.tellMeButton = document.querySelector(".submit");
 cocktailApp.revealButton = document.querySelector(".reveal");
 cocktailApp.randomButton = document.querySelector(".randomize");
 cocktailApp.resultsContainer = document.querySelector(".results");
+cocktailApp.drinkReveal = document.querySelector(".resultsContainer");
 cocktailApp.buttonContainer = document.querySelector(".buttonContainer");
 cocktailApp.recipeContainer = document.querySelector(".recipe");
 cocktailApp.ingredientList = document.querySelector(".ingredientList");
@@ -32,6 +33,7 @@ cocktailApp.instructionList = document.querySelector(".instructionList");
 cocktailApp.alcoholSelector = document.querySelector("#alcoholSelect");
 cocktailApp.toggle = document.querySelector(".toggle");
 cocktailApp.drinkName = document.querySelector(".drinkName");
+cocktailApp.drinkImage = document.querySelector(".drinkImage");
 
 
 // establishing methods ---
@@ -53,16 +55,17 @@ cocktailApp.resetRecipeContainer = function () {
         ingredientList.firstChild.remove()
     }
     // reset image preview
-    const imagePreview = document.querySelector('.drinkImage').firstChild;
-    if (imagePreview) {
-        imagePreview.remove();
-    }
+
 };
 // method to soften elements entry onto page:
 cocktailApp.fadeIn = function(element, interval) {  
     let opacity = 0
     element.style.opacity = opacity;
-    element.style.display = 'block';
+    if (element === cocktailApp.drinkReveal) {
+        element.style.display = 'flex';
+    } else {
+        element.style.display = 'block';
+    }
     const fade = setInterval(function () {
         if (opacity >= 1) {
             clearInterval(fade);
@@ -89,6 +92,9 @@ cocktailApp.fadeOut = function (element, interval) {
 // method to take user input and find a random drink:
 cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
+    while (cocktailApp.drinkImage.firstChild) {
+        cocktailApp.drinkImage.firstChild.remove()
+    }
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
@@ -108,11 +114,15 @@ cocktailApp.chooseDrink = function (event) {
                 cocktailApp.drinksArray = Array.from(jsonResult.drinks);
                 // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
-                // print drink name to page:
+                // print drink name & image preview to page:
+                const imagePreview = document.createElement('img');
+                imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
+                document.querySelector('.drinkImage').appendChild(imagePreview);
                 cocktailApp.drinkName.textContent = randomDrink.strDrink;
                 cocktailApp.currentDrink = randomDrink.idDrink;
                 cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
+                cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
                 cocktailApp.fadeIn(cocktailApp.drinkName, 20);
                 cocktailApp.drinkName.scrollIntoView({behavior: "smooth"});
                 // adjust searchParams for current drink recipe:
@@ -131,11 +141,15 @@ cocktailApp.chooseDrink = function (event) {
                 // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
                 console.log(cocktailApp.drinksArray);
-                // print drink name to page:
+                // print drink name & image preview to page:
+                const imagePreview = document.createElement('img');
+                imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
+                document.querySelector('.drinkImage').appendChild(imagePreview);
                 cocktailApp.drinkName.textContent = randomDrink.strDrink;
                 cocktailApp.currentDrink = randomDrink.idDrink;
                 cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
+                cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
                 cocktailApp.fadeIn(cocktailApp.drinkName, 20);
                 cocktailApp.drinkName.scrollIntoView({ behavior: "smooth" });
                 // adjust searchParams for current drink recipe:
@@ -193,10 +207,6 @@ cocktailApp.revealButton.addEventListener("click", function () {
             cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", drinkDetails);
             // reset recipe container content:
             cocktailApp.resetRecipeContainer();
-            // show image preview
-            const imagePreview = document.createElement('img');
-            imagePreview.setAttribute('src', `${drinkDetails.strDrinkThumb}/preview`)
-            document.querySelector('.drinkImage').appendChild(imagePreview);
 
 
             // print instructions to page

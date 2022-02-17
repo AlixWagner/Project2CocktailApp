@@ -182,5 +182,14 @@
                 margin-bottom: 10px;
             }
         }
+        .resultsContainer {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            margin-bottom: 0;
+            .drinkImage {
+                margin: 20px 0;
+                align-self: center;
+            }
+        }
     }
 }

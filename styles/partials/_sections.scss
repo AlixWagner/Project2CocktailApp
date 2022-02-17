@@ -38,11 +38,26 @@ ul li {
 }
 .results {
     display: none;
-    h2 {
-        opacity: 0;
+    .resultsContainer {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-bottom: 30px;
+        h2 {
+            opacity: 0;
+        }
+        .drinkImage {
+            height: 206px;
+            width: 206px;
+            margin-right: 20px;
+            img {
+                border-radius: 50%;
+                border: 3px solid $secondary;
+            }
+        }
     }
     .drinkName{
-        padding: 1rem;
+        padding: 20px 20px 20px 0;
         position: relative;
         &::before {
             position: absolute;

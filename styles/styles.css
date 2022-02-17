@@ -369,11 +369,33 @@ ul li {
 .results {
   display: none;
 }
-.results h2 {
+.results .resultsContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: 30px;
+}
+.results .resultsContainer h2 {
   opacity: 0;
 }
+.results .resultsContainer .drinkImage {
+  height: 206px;
+  width: 206px;
+  margin-right: 20px;
+}
+.results .resultsContainer .drinkImage img {
+  border-radius: 50%;
+  border: 3px solid #6a8ca9;
+}
 .results .drinkName {
-  padding: 1rem;
+  padding: 20px 20px 20px 0;
   position: relative;
 }
 .results .drinkName::before {
@@ -769,5 +791,20 @@ header .wrapper .cocktailForm h1 {
   .results .buttonContainer button {
     width: 100%;
     margin-bottom: 10px;
+  }
+  .results .resultsContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 0;
+  }
+  .results .resultsContainer .drinkImage {
+    margin: 20px 0;
+    -ms-flex-item-align: center;
+        align-self: center;
   }
 }

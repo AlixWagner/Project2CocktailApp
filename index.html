@@ -59,7 +59,15 @@
         <main>
             <div class ="wrapper">
                 <section class="results">
-                    <h2 class="drinkName"><!-- dynamic results will be added here --></h2>
+                    <div class="resultsContainer">
+                        <h2 class="drinkName">
+                            <!-- dynamic results will be added here -->
+                        </h2>
+                        <div class="drinkImage">
+                            <!-- strImageSource will be appended here (.appendChild) -->
+                        </div>
+                    </div>
+                    
                     <!-- .buttonContainer will be hidden when .reveal button is pressed: -->
                     <div class="buttonContainer">
                         <button class="reveal">Let's Make It!</button>
@@ -68,9 +76,6 @@
                 </section>
                 <!-- .recipe section will be revealed when .reveal button is pressed: -->
                 <section class="recipe">
-                    <div class="drinkImage">
-                        <!-- strImageSource will be appended here (.appendChild) -->
-                    </div>
                     <!-- .recipeContainer div will just be for styling purposes: -->
                     <div class="recipeContainer">
                         <div class="ingredients">
