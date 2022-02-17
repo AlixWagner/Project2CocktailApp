@@ -19,7 +19,7 @@ cocktailApp.searchUrl.search = new URLSearchParams({});
 // base url for the submit button - adjusted if non-alcoholic is toggled.
 cocktailApp.currentUrl = cocktailApp.randomUrl;
 
-// establishing variables, etc. ---
+// ESTABLISHING VARIABLES, etc. ---
 cocktailApp.currentDrink;
 cocktailApp.drinksArray = [];
 cocktailApp.ingredients = [];
@@ -42,8 +42,7 @@ cocktailApp.searchButton = document.querySelector(".searchButton");
 cocktailApp.drinkName = document.querySelector(".drinkName");
 cocktailApp.drinkImage = document.querySelector(".drinkImage");
 
-
-// establishing methods ---
+// ESTABLISHING METHODS ---
 // method to filter through an array for all ingredients/measurements and return only those with values:
 cocktailApp.parseArray = function (baseArray, pushArray, inclusion, object) {
     const currentArray = baseArray.filter((each) => each.includes(inclusion));
@@ -62,7 +61,6 @@ cocktailApp.resetRecipeContainer = function () {
         ingredientList.firstChild.remove()
     }
     // reset image preview
-
 };
 // method to soften elements entry onto page:
 cocktailApp.fadeIn = function(element, interval) {  
@@ -121,16 +119,18 @@ cocktailApp.selectorFadeOut = function (element, interval) {
 // method to take user input and find a random drink:
 cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
+    // remove drink image & hide any current recipe info:
     while (cocktailApp.drinkImage.firstChild) {
         cocktailApp.drinkImage.firstChild.remove()
-    }
+    };
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    // establish users alcohol choices:
     const userAlcohol = cocktailApp.alcoholSelector.value;
     const secondUserAlcohol = cocktailApp.secondAlcoholSelector.value;
     // if user has selected an alcohol:
-    if (userAlcohol && secondUserAlcohol) {
+    if (userAlcohol && secondUserAlcohol) {// selected 2 options
         cocktailApp.alcoholUrl.search = new URLSearchParams({
             i: `${userAlcohol},${secondUserAlcohol}`
         });
@@ -151,7 +151,9 @@ cocktailApp.chooseDrink = function (event) {
                     imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
                     document.querySelector('.drinkImage').appendChild(imagePreview);
                     cocktailApp.drinkName.textContent = randomDrink.strDrink;
+                    // establish current drink option:
                     cocktailApp.currentDrink = randomDrink.idDrink;
+                    // smoothly add drink name & buttons to page:
                     cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                     cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
                     cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
@@ -163,7 +165,7 @@ cocktailApp.chooseDrink = function (event) {
                     });
                 }
             });
-    } else if (userAlcohol) {
+    } else if (userAlcohol) {// selected 1 option
         // add that alcohol as a search parameter
         cocktailApp.alcoholUrl.search = new URLSearchParams({
             i: userAlcohol
@@ -182,7 +184,9 @@ cocktailApp.chooseDrink = function (event) {
                 imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
                 document.querySelector('.drinkImage').appendChild(imagePreview);
                 cocktailApp.drinkName.textContent = randomDrink.strDrink;
+                // establish current drink option:
                 cocktailApp.currentDrink = randomDrink.idDrink;
+                // smoothly add drink name & buttons to page:
                 cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
@@ -209,7 +213,9 @@ cocktailApp.chooseDrink = function (event) {
                 imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
                 document.querySelector('.drinkImage').appendChild(imagePreview);
                 cocktailApp.drinkName.textContent = randomDrink.strDrink;
+                // establish current drink option:
                 cocktailApp.currentDrink = randomDrink.idDrink;
+                // smoothly add drink name & buttons to page:
                 cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
                 cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
@@ -230,11 +236,13 @@ cocktailApp.tellMeButton.addEventListener("click", cocktailApp.chooseDrink);
 cocktailApp.randomButton.addEventListener("click", cocktailApp.chooseDrink);
 // eventListener for non-alcoholic toggle
 cocktailApp.toggle.addEventListener("click", function() {
+    // smoothly hide any current recipe info
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
     cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
     if (cocktailApp.toggle.checked) {
+        // set current drink to non-alcoholic
         cocktailApp.currentUrl = cocktailApp.mocktailUrl;
         // make sure user can't add alcohol selection
         cocktailApp.alcoholSelector.disabled = true;
@@ -248,7 +256,9 @@ cocktailApp.toggle.addEventListener("click", function() {
             cocktailApp.selectorFadeOut(cocktailApp.secondAlcoholSelector, 5)
         }
     } else {
+        // set current drink back to alcoholic
         cocktailApp.currentUrl = cocktailApp.randomUrl;
+        // re-enable alcohol selectors for users
         cocktailApp.alcoholSelector.disabled = false;
         cocktailApp.secondAlcoholSelector.disabled = false;
     }
@@ -256,14 +266,16 @@ cocktailApp.toggle.addEventListener("click", function() {
 
 // eventListener for alcohol selector:
 cocktailApp.alcoholSelector.addEventListener("change", function() {
+    // smoothly hide any current recipe info
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
     cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
+    // show second alcohol alcohol selector when user has selected an alcohol
     if (cocktailApp.alcoholSelector.value) {
         cocktailApp.selectorFadeIn(cocktailApp.secondAlcoholLabel, 10)
         cocktailApp.selectorFadeIn(cocktailApp.secondAlcoholSelector, 10)
-    } else {
+    } else {// hide second alcohol selector when no alcohol selected
         cocktailApp.selectorFadeOut(cocktailApp.secondAlcoholLabel, 5)
         cocktailApp.selectorFadeOut(cocktailApp.secondAlcoholSelector, 5)
         cocktailApp.secondAlcoholSelector.value = "";
@@ -272,12 +284,14 @@ cocktailApp.alcoholSelector.addEventListener("change", function() {
 
 // eventListener for Let's Make This button:
 cocktailApp.revealButton.addEventListener("click", function () {
+    // when drink is chosen hide buttons before showing recipe
     cocktailApp.fadeOut(cocktailApp.buttonContainer, 1);
     fetch(cocktailApp.recipeUrl)
         .then((response) => {
             return response.json();
         }).then((jsonResult) => {
             const drinkDetails = jsonResult.drinks[0];
+            // make an array from the returned object so that we can loop through them:
             const newArray = Object.keys(drinkDetails);
             console.log(jsonResult.drinks[0]);
             // Reset the ingredients and measurements arrays
