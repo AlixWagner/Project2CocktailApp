@@ -93,13 +93,31 @@ cocktailApp.fadeOut = function (element, interval) {
     }, interval);
 };
 
+cocktailApp.showDrinkPreview = function(drink) {
+    while (cocktailApp.drinkImage.firstChild) {
+        cocktailApp.drinkImage.firstChild.remove()
+    }
+
+    const imagePreview = document.createElement('img');
+    imagePreview.setAttribute('src', `${drink.strDrinkThumb}/preview`)
+    document.querySelector('.drinkImage').appendChild(imagePreview);
+    cocktailApp.drinkName.textContent = drink.strDrink;
+    cocktailApp.currentDrink = drink.idDrink;
+    cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
+    cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
+    cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
+    cocktailApp.fadeIn(cocktailApp.drinkName, 20);
+    cocktailApp.drinkName.scrollIntoView({behavior: "smooth"});
+    // adjust searchParams for current drink recipe:
+    cocktailApp.recipeUrl.search = new URLSearchParams({
+        i: cocktailApp.currentDrink
+    });
+}
 
 // method to take user input and find a random drink:
 cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
-    while (cocktailApp.drinkImage.firstChild) {
-        cocktailApp.drinkImage.firstChild.remove()
-    }
+
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
@@ -120,20 +138,7 @@ cocktailApp.chooseDrink = function (event) {
                 // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
                 // print drink name & image preview to page:
-                const imagePreview = document.createElement('img');
-                imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
-                document.querySelector('.drinkImage').appendChild(imagePreview);
-                cocktailApp.drinkName.textContent = randomDrink.strDrink;
-                cocktailApp.currentDrink = randomDrink.idDrink;
-                cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
-                cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
-                cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
-                cocktailApp.fadeIn(cocktailApp.drinkName, 20);
-                cocktailApp.drinkName.scrollIntoView({behavior: "smooth"});
-                // adjust searchParams for current drink recipe:
-                cocktailApp.recipeUrl.search = new URLSearchParams({
-                    i: cocktailApp.currentDrink
-                });
+                cocktailApp.showDrinkPreview(randomDrink);
             });
     } else { // if no alcohol was selected by the user:
         fetch(cocktailApp.currentUrl)
@@ -147,20 +152,7 @@ cocktailApp.chooseDrink = function (event) {
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
                 console.log(cocktailApp.drinksArray);
                 // print drink name & image preview to page:
-                const imagePreview = document.createElement('img');
-                imagePreview.setAttribute('src', `${randomDrink.strDrinkThumb}/preview`)
-                document.querySelector('.drinkImage').appendChild(imagePreview);
-                cocktailApp.drinkName.textContent = randomDrink.strDrink;
-                cocktailApp.currentDrink = randomDrink.idDrink;
-                cocktailApp.fadeIn(cocktailApp.resultsContainer, 1);
-                cocktailApp.fadeIn(cocktailApp.buttonContainer, 1);
-                cocktailApp.fadeIn(cocktailApp.drinkReveal, 20);
-                cocktailApp.fadeIn(cocktailApp.drinkName, 20);
-                cocktailApp.drinkName.scrollIntoView({ behavior: "smooth" });
-                // adjust searchParams for current drink recipe:
-                cocktailApp.recipeUrl.search = new URLSearchParams({
-                    i: cocktailApp.currentDrink
-                });
+                cocktailApp.showDrinkPreview(randomDrink);
             });
     };
     // clear any recipe info currently open:
@@ -245,6 +237,11 @@ cocktailApp.revealButton.addEventListener("click", function () {
 
 cocktailApp.searchButton.addEventListener("click", function (e) {
     e.preventDefault();
+
+    cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
+    cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
+    cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+
     const searchTerm = cocktailApp.searchInput.value;
     cocktailApp.searchUrl.search = new URLSearchParams({
         s: searchTerm
@@ -255,11 +252,10 @@ cocktailApp.searchButton.addEventListener("click", function (e) {
         if (jsonResult.drinks === null) {
             // Update UI to show that there are no results
             console.log('no drinks!')
-
         } else {
             const drink = jsonResult.drinks[0];
             // Update UI to show the drink recipe
-            console.log(drink);
+            cocktailApp.showDrinkPreview(drink);
         }
     });
 });
