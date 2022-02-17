@@ -5,7 +5,7 @@ const cocktailApp = {};
 // Setting up fetch API urls:
 // initial call by users drink choice:
 cocktailApp.alcoholUrl = new URL("https://www.thecocktaildb.com/api/json/v1/1/filter.php");
-cocktailApp.alcoholUrl.search - new URLSearchParams({});
+cocktailApp.alcoholUrl.search = new URLSearchParams({});
 // secondary call for the recipe: 
 cocktailApp.recipeUrl = new URL("https://www.thecocktaildb.com/api/json/v1/1/lookup.php");
 cocktailApp.recipeUrl.search = new URLSearchParams({});
@@ -13,7 +13,10 @@ cocktailApp.recipeUrl.search = new URLSearchParams({});
 cocktailApp.randomUrl = new URL("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic");
 // call if non-alcoholic toggled:
 cocktailApp.mocktailUrl = new URL("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic");
-// base url for the submit button - adjusted if non-alcoholic is toggled. 
+// search url
+cocktailApp.searchUrl = new URL("https://www.thecocktaildb.com/api/json/v1/1/search.php");
+cocktailApp.searchUrl.search = new URLSearchParams({});
+// base url for the submit button - adjusted if non-alcoholic is toggled.
 cocktailApp.currentUrl = cocktailApp.randomUrl;
 
 // establishing variables, etc. ---
@@ -32,6 +35,8 @@ cocktailApp.ingredientList = document.querySelector(".ingredientList");
 cocktailApp.instructionList = document.querySelector(".instructionList");
 cocktailApp.alcoholSelector = document.querySelector("#alcoholSelect");
 cocktailApp.toggle = document.querySelector(".toggle");
+cocktailApp.searchInput = document.querySelector(".searchInput");
+cocktailApp.searchButton = document.querySelector(".searchButton");
 cocktailApp.drinkName = document.querySelector(".drinkName");
 cocktailApp.drinkImage = document.querySelector(".drinkImage");
 
@@ -236,4 +241,25 @@ cocktailApp.revealButton.addEventListener("click", function () {
             // hide buttonContainer
             // show recipe section
         });
+});
+
+cocktailApp.searchButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    const searchTerm = cocktailApp.searchInput.value;
+    cocktailApp.searchUrl.search = new URLSearchParams({
+        s: searchTerm
+    });
+    fetch(cocktailApp.searchUrl).then((response) => {
+        return response.json();
+    }).then((jsonResult) => {
+        if (jsonResult.drinks === null) {
+            // Update UI to show that there are no results
+            console.log('no drinks!')
+
+        } else {
+            const drink = jsonResult.drinks[0];
+            // Update UI to show the drink recipe
+            console.log(drink);
+        }
+    });
 });
