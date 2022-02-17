@@ -449,26 +449,6 @@ ul li {
           box-shadow: 0px 0px 0px #e4ae5d;
 }
 
-.drinkName {
-  padding: 1rem;
-}
-
-.recipe {
-  padding: 1rem;
-  background: #b7cedb;
-  -webkit-box-shadow: 5px 5px 0px #e4ae5d;
-          box-shadow: 5px 5px 0px #e4ae5d;
-  border-radius: 5px;
-}
-.recipe p {
-  margin-bottom: 0;
-}
-
-ul li {
-  list-style: none;
-  padding-bottom: 0.5rem;
-}
-
 footer {
   text-align: center;
 }

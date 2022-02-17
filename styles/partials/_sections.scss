@@ -99,27 +99,6 @@ ul li {
     }
 }
 
-//Results section
-.drinkName{
-    padding: 1rem; 
-}
-
-// Recipe section
-.recipe {
-    padding: 1rem; 
-    background: $primary;
-    box-shadow: 5px 5px 0px $accent;
-    border-radius: 5px; 
-    p {
-        margin-bottom: 0; 
-    }
-}
-
-ul li {
-    list-style: none;
-    padding-bottom:0.5rem; 
-}
-
 //footer section
 footer {
     text-align: center;
