@@ -336,4 +336,12 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
             cocktailApp.showDrinkPreview(drink);
         }
     });
+    cocktailApp.searchInput.value = "";
+});
+
+//Click search icon, display input 
+const searchIcon = document.querySelector(".fa-magnifying-glass");
+searchIcon.addEventListener("click", function() {
+    document.querySelector(".navMainSearch").style.display = "inline-block";
+    searchIcon.style.display = "none";
 });
