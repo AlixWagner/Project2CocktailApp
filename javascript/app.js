@@ -2,6 +2,17 @@
 
 // App Object:
 const cocktailApp = {};
+// Create an init method 
+cocktailApp.init = () => {
+    if (mediaQuery.matches) {
+        document.addEventListener("click", (event) => {
+            if (event.target !== cocktailApp.searchButton && event.target !== cocktailApp.searchInput && event.target !== searchIcon) {
+                document.querySelector(".navMainSearch").style.display = "none";
+                searchIcon.style.display = "block";
+            }
+        })
+    }
+}
 // Setting up fetch API urls:
 // initial call by users drink choice:
 cocktailApp.alcoholUrl = new URL("https://www.thecocktaildb.com/api/json/v2/9973533/filter.php");
@@ -358,11 +369,4 @@ searchIcon.addEventListener("click", function() {
 
 const mediaQuery = window.matchMedia("(max-width: 700px)")
 
-if (mediaQuery.matches) {
-    document.addEventListener("click", (event) => {
-        if (event.target !== cocktailApp.searchButton && event.target !== cocktailApp.searchInput && event.target !== searchIcon) {
-            document.querySelector(".navMainSearch").style.display = "none";
-            searchIcon.style.display = "block";
-        }
-    })
-}
+cocktailApp.init();
