@@ -202,7 +202,6 @@ cocktailApp.chooseDrink = function (event) {
                 cocktailApp.drinksArray = Array.from(jsonResult.drinks);
                 // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
-                console.log(cocktailApp.drinksArray);
                 // print drink name & image preview to page:
                 cocktailApp.showDrinkPreview(randomDrink);
             });
@@ -282,7 +281,6 @@ cocktailApp.revealButton.addEventListener("click", function () {
             const drinkDetails = jsonResult.drinks[0];
             // make an array from the returned object so that we can loop through them:
             const newArray = Object.keys(drinkDetails);
-            console.log(jsonResult.drinks[0]);
             // Reset the ingredients and measurements arrays
             cocktailApp.ingredients = [];
             cocktailApp.measurements = [];
