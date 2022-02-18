@@ -22,17 +22,8 @@
             <div class="searchContainer">
                 <i class="fa-solid fa-magnifying-glass" tabindex="0"></i>
                 <form class="navMainSearch">
-                    <i src="./styles/assets/searchIcon.svg">
-                    <!-- tabindex="0" makes non-accessible elements (images, icons, etc) tabbable -->
-                    <!-- display none -->
-                    <!-- 700px - display block -->
-                    <!-- on click: display input -->
                     <label class="sr-only">Search</label>
                     <input type="search" class="searchInputField"  placeholder="Search over 600 drink recipes..." >
-                    <!-- ADD: on submit clear input -->
-                    <!-- 700px display none -->
-                    <!-- set width input to 90% margin 0 auto -->
-                    <!-- on submit fadeOut and fadeIn icon/button -->
                     <input type="submit" class="searchButton" aria-label="Search" value="">
                 </form>
             </div>
@@ -64,7 +55,7 @@
                                 <option value="whiskey">Whiskey</option>
                             </select>
                             <label class="otherAlcoholLabel" for="otherAlcohol">Got another one in mind?</label>
-                            <select name="otherAlcohol" class="otherAlcoholSelect" id="otherAlcoholSelect" disabled="true">
+                            <select name="otherAlcohol" class="otherAlcoholSelect" id="otherAlcoholSelect" disabled="true" value ="">
                                 <option value="">Choose your booze</option>
                                 <option value="bourbon">Bourbon</option>
                                 <option value="brandy">Brandy</option>

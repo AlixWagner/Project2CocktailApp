@@ -2,6 +2,17 @@
 
 // App Object:
 const cocktailApp = {};
+// Create an init method 
+cocktailApp.init = () => {
+    if (mediaQuery.matches) {
+        document.addEventListener("click", (event) => {
+            if (event.target !== cocktailApp.searchButton && event.target !== cocktailApp.searchInput && event.target !== searchIcon) {
+                document.querySelector(".navMainSearch").style.display = "none";
+                searchIcon.style.display = "block";
+            }
+        })
+    }
+}
 // Setting up fetch API urls:
 // initial call by users drink choice:
 cocktailApp.alcoholUrl = new URL("https://www.thecocktaildb.com/api/json/v2/9973533/filter.php");
@@ -202,7 +213,6 @@ cocktailApp.chooseDrink = function (event) {
                 cocktailApp.drinksArray = Array.from(jsonResult.drinks);
                 // get random drink from the array
                 const randomDrink = cocktailApp.drinksArray[Math.floor(Math.random() * cocktailApp.drinksArray.length)];
-                console.log(cocktailApp.drinksArray);
                 // print drink name & image preview to page:
                 cocktailApp.showDrinkPreview(randomDrink);
             });
@@ -282,7 +292,6 @@ cocktailApp.revealButton.addEventListener("click", function () {
             const drinkDetails = jsonResult.drinks[0];
             // make an array from the returned object so that we can loop through them:
             const newArray = Object.keys(drinkDetails);
-            console.log(jsonResult.drinks[0]);
             // Reset the ingredients and measurements arrays
             cocktailApp.ingredients = [];
             cocktailApp.measurements = [];
@@ -344,6 +353,10 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
         }
     });
     cocktailApp.searchInput.value = "";
+    if (mediaQuery.matches) {
+        document.querySelector(".navMainSearch").style.display = "none";
+        searchIcon.style.display = "block";
+    }
 });
 
 //Click search icon, display input 
@@ -352,3 +365,8 @@ searchIcon.addEventListener("click", function() {
     document.querySelector(".navMainSearch").style.display = "inline-block";
     searchIcon.style.display = "none";
 });
+
+
+const mediaQuery = window.matchMedia("(max-width: 700px)")
+
+cocktailApp.init();
