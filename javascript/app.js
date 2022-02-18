@@ -42,6 +42,8 @@ cocktailApp.searchForm = document.querySelector(".navMainSearch");
 cocktailApp.searchButton = document.querySelector(".searchButton");
 cocktailApp.drinkName = document.querySelector(".drinkName");
 cocktailApp.drinkImage = document.querySelector(".drinkImage");
+cocktailApp.span = document.querySelector(".scrollToTop");
+cocktailApp.error = document.querySelector(".error");
 
 // ESTABLISHING METHODS ---
 // method to filter through an array for all ingredients/measurements and return only those with values:
@@ -117,12 +119,11 @@ cocktailApp.selectorFadeOut = function (element, interval) {
         element.style.opacity = opacity;
     }, interval);
 };
-
+// method to print drink name and image to page:
 cocktailApp.showDrinkPreview = function(drink) {
     while (cocktailApp.drinkImage.firstChild) {
         cocktailApp.drinkImage.firstChild.remove()
     }
-
     const imagePreview = document.createElement('img');
     imagePreview.setAttribute('src', `${drink.strDrinkThumb}/preview`)
     document.querySelector('.drinkImage').appendChild(imagePreview);
@@ -138,11 +139,9 @@ cocktailApp.showDrinkPreview = function(drink) {
         i: cocktailApp.currentDrink
     });
 }
-
 // method to take user input and find a random drink:
 cocktailApp.chooseDrink = function (event) {
     event.preventDefault();
-
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
@@ -159,8 +158,9 @@ cocktailApp.chooseDrink = function (event) {
                 return response.json();
             }).then((jsonResult) => {
                 if (jsonResult.drinks === "None Found") {
-                    // Code to Fade In "Sorry No Results" 
+                    cocktailApp.fadeIn(cocktailApp.error); 
                 } else {
+                    cocktailApp.fadeOut(cocktailApp.error, 5);
                     cocktailApp.drinksArray = [];
                     // create an array from returned json
                     cocktailApp.drinksArray = Array.from(jsonResult.drinks);
@@ -171,6 +171,7 @@ cocktailApp.chooseDrink = function (event) {
                 }
             });
     } else if (userAlcohol) {// selected 1 option
+        cocktailApp.fadeOut(cocktailApp.error, 5);
         // add that alcohol as a search parameter
         cocktailApp.alcoholUrl.search = new URLSearchParams({
             i: userAlcohol
@@ -188,6 +189,7 @@ cocktailApp.chooseDrink = function (event) {
                 cocktailApp.showDrinkPreview(randomDrink);
             });
     } else { // if no alcohol was selected by the user:
+        cocktailApp.fadeOut(cocktailApp.error, 5);
         fetch(cocktailApp.currentUrl)
             .then((response) => {
                 return response.json();
@@ -205,8 +207,8 @@ cocktailApp.chooseDrink = function (event) {
     // clear any recipe info currently open:
     cocktailApp.resetRecipeContainer();
 };
-
-// eventListeners for all our buttons:
+// ESTABLISHING EVENT LISTENERS ---
+// eventListeners for our drink search buttons:
 cocktailApp.tellMeButton.addEventListener("click", cocktailApp.chooseDrink);
 cocktailApp.randomButton.addEventListener("click", cocktailApp.chooseDrink);
 // eventListener for non-alcoholic toggle
@@ -215,6 +217,7 @@ cocktailApp.toggle.addEventListener("click", function() {
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    cocktailApp.fadeOut(cocktailApp.error, 5);
     cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
     if (cocktailApp.toggle.checked) {
         // set current drink to non-alcoholic
@@ -238,13 +241,13 @@ cocktailApp.toggle.addEventListener("click", function() {
         cocktailApp.secondAlcoholSelector.disabled = false;
     }
 });
-
 // eventListener for alcohol selector:
 cocktailApp.alcoholSelector.addEventListener("change", function() {
     // smoothly hide any current recipe info
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    cocktailApp.fadeOut(cocktailApp.error, 5);
     cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
     // show second alcohol alcohol selector when user has selected an alcohol
     if (cocktailApp.alcoholSelector.value) {
@@ -255,15 +258,16 @@ cocktailApp.alcoholSelector.addEventListener("change", function() {
         cocktailApp.selectorFadeOut(cocktailApp.secondAlcoholSelector, 5)
         cocktailApp.secondAlcoholSelector.value = "";
     } 
-})
+});
+// eventListener for second alcohol selector:
 cocktailApp.secondAlcoholSelector.addEventListener("change", function () {
     // smoothly hide any current recipe info
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    cocktailApp.fadeOut(cocktailApp.error, 5);
     cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
 })
-
 // eventListener for Let's Make This button:
 cocktailApp.revealButton.addEventListener("click", function () {
     // when drink is chosen hide buttons before showing recipe
@@ -312,7 +316,7 @@ cocktailApp.revealButton.addEventListener("click", function () {
             // show recipe section
         });
 });
-
+// eventListener for search form submit:
 cocktailApp.searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -328,12 +332,16 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
         return response.json();
     }).then((jsonResult) => {
         if (jsonResult.drinks === null) {
-            // Update UI to show that there are no results
-            console.log('no drinks!')
+            cocktailApp.fadeIn(cocktailApp.error); 
         } else {
+            cocktailApp.fadeOut(cocktailApp.error, 5);
             const drink = jsonResult.drinks[0];
             // Update UI to show the drink recipe
             cocktailApp.showDrinkPreview(drink);
         }
     });
 });
+// eventListener for scroll to top:
+cocktailApp.span.addEventListener("click", function(e) {
+    cocktailApp.searchForm.scrollIntoView({ behavior: "smooth" })
+})

@@ -21,8 +21,17 @@
         <header>
             <div class="searchContainer">
                 <form class="navMainSearch">
+                    <i src="./styles/assets/searchIcon.svg">
+                    <!-- tabindex="0" makes non-accessible elements (images, icons, etc) tabbable -->
+                    <!-- display none -->
+                    <!-- 700px - display block -->
+                    <!-- on click: display input -->
                     <label class="sr-only">Search</label>
                     <input type="search" class="searchInputField"  placeholder="Search over 600 drink recipes..." >
+                    <!-- ADD: on submit clear input -->
+                    <!-- 700px display none -->
+                    <!-- set width input to 90% margin 0 auto -->
+                    <!-- on submit fadeOut and fadeIn icon/button -->
                     <input type="submit" class="searchButton" aria-label="Search" value="">
                 </form>
             </div>
@@ -40,7 +49,7 @@
                     <form class="formSection">
                         <div class="alcoholSelection">
                             <label for="alcohol">Got an alcohol of choice?</label>
-                            <select name="alcohol" id="alcoholSelect">
+                            <select name="alcohol" class="alcoholSelect" id="alcoholSelect">
                                 <option value="">Choose your booze</option>
                                 <option value="bourbon">Bourbon</option>
                                 <option value="brandy">Brandy</option>
@@ -120,6 +129,11 @@
                             </p>
                         </div>
                     </div>
+                </section>
+                <!-- .error section will be revealed when no drinks available -->
+                <section class="error">
+                    <h3>UH-OH...</h3>
+                    <p>Looks like we don't have any drinks that match what you're looking for - <span tabindex="0" class="scrollToTop">Please try another search.</span></p>
                 </section>
             </div>
         </main>

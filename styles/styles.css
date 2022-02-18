@@ -366,6 +366,29 @@ ul li {
   opacity: 0;
 }
 
+.error {
+  display: none;
+  padding: 30px 6%;
+  background: #b7cedb;
+  -webkit-box-shadow: 5px 5px 0px #e4ae5d;
+          box-shadow: 5px 5px 0px #e4ae5d;
+  border-radius: 5px;
+}
+.error p {
+  margin-bottom: 10px;
+}
+.error span {
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  color: #23293b;
+  -webkit-transition: text-shadow 0.4s, -webkit-transform 0.3s;
+  transition: text-shadow 0.4s, -webkit-transform 0.3s;
+  transition: transform 0.3s, text-shadow 0.4s;
+  transition: transform 0.3s, text-shadow 0.4s, -webkit-transform 0.3s;
+  text-shadow: 1px 1px #6a8ca9;
+}
+
 .results {
   display: none;
 }
@@ -395,6 +418,7 @@ ul li {
   border: 3px solid #6a8ca9;
 }
 .results .drinkName {
+  min-width: 100px;
   padding: 20px 20px 20px 0;
   position: relative;
 }
@@ -428,6 +452,7 @@ ul li {
   transition: transform 0.2s, box-shadow 0.2s, -webkit-transform 0.2s, -webkit-box-shadow 0.2s;
   border-radius: 5px;
   padding: 7px;
+  color: #23293b;
   border: 3px solid #6a8ca9;
 }
 .results button.reveal {
@@ -802,6 +827,12 @@ header .wrapper .cocktailForm h1 {
             transform: none;
     -webkit-box-shadow: none;
             box-shadow: none;
+  }
+
+  .error span:hover, .error span:focus {
+    -webkit-transform: none;
+            transform: none;
+    text-shadow: 1px 1px #6a8ca9;
   }
 }
 @media (max-width: 560px) {
