@@ -341,9 +341,7 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
             cocktailApp.showDrinkPreview(drink);
         }
     });
-<<<<<<< HEAD
-});
-=======
+
     cocktailApp.searchInput.value = "";
 });
 
@@ -353,4 +351,3 @@ searchIcon.addEventListener("click", function() {
     document.querySelector(".navMainSearch").style.display = "inline-block";
     searchIcon.style.display = "none";
 });
->>>>>>> da89f1bb1c66112560e7816fce58bdbe15289e4b
