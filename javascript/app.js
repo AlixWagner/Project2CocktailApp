@@ -35,7 +35,8 @@ cocktailApp.ingredientList = document.querySelector(".ingredientList");
 cocktailApp.instructionList = document.querySelector(".instructionList");
 cocktailApp.alcoholSelector = document.querySelector("#alcoholSelect");
 cocktailApp.toggle = document.querySelector(".toggle");
-cocktailApp.searchInput = document.querySelector(".searchInput");
+cocktailApp.searchInput = document.querySelector(".searchInputField");
+cocktailApp.searchForm = document.querySelector(".navMainSearch");
 cocktailApp.searchButton = document.querySelector(".searchButton");
 cocktailApp.drinkName = document.querySelector(".drinkName");
 cocktailApp.drinkImage = document.querySelector(".drinkImage");
@@ -235,7 +236,7 @@ cocktailApp.revealButton.addEventListener("click", function () {
         });
 });
 
-cocktailApp.searchButton.addEventListener("click", function (e) {
+cocktailApp.searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);

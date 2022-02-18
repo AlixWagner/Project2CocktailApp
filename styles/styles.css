@@ -595,6 +595,55 @@ header .wrapper .cocktailForm h1 {
           box-shadow: 1px 1px 0px #e4ae5d;
 }
 
+.searchContainer {
+  text-align: right;
+}
+
+.navMainSearch {
+  display: inline-block;
+  position: relative;
+}
+
+.searchInputField {
+  border: 2px solid black;
+  width: 20rem;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+::-webkit-input-placeholder {
+  font-size: 0.9rem;
+}
+
+::-moz-placeholder {
+  font-size: 0.9rem;
+}
+
+:-ms-input-placeholder {
+  font-size: 0.9rem;
+}
+
+::-ms-input-placeholder {
+  font-size: 0.9rem;
+}
+
+::placeholder {
+  font-size: 0.9rem;
+}
+
+.searchButton {
+  cursor: pointer;
+  background: url(./assets/searchIcon.svg) 0 0 no-repeat;
+  width: 1rem;
+  height: 1rem;
+  padding: 12px;
+  position: absolute;
+  right: 1.25rem;
+  top: 1.7rem;
+  border: none;
+}
+
 @media (max-width: 1020px) {
   header .wrapper {
     position: relative;
