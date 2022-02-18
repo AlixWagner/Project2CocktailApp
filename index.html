@@ -11,13 +11,21 @@
             href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Poppins:wght@200;300;400;600&family=Shadows+Into+Light+Two&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="styles/styles.css" />
+
+        <script
+            src="https://kit.fontawesome.com/db0925fcfc.js"
+            crossorigin="anonymous"
+        ></script>
     </head>
     <body>
         <header>
-            <form>
-                <input type="text" class="searchInput"/>
-                <button class="searchButton">Search</button>
-            </form>
+            <div class="searchContainer">
+                <form class="navMainSearch">
+                    <label class="sr-only">Search</label>
+                    <input type="search" class="searchInputField"  placeholder="Search over 600 drink recipes..." >
+                    <input type="submit" class="searchButton" aria-label="Search" value="">
+                </form>
+            </div>
 
             <div class="wrapper">
                 <!-- Alt cocktail image option -->
