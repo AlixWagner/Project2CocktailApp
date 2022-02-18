@@ -281,6 +281,13 @@ cocktailApp.alcoholSelector.addEventListener("change", function() {
         cocktailApp.secondAlcoholSelector.value = "";
     } 
 })
+cocktailApp.secondAlcoholSelector.addEventListener("change", function () {
+    // smoothly hide any current recipe info
+    cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
+    cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
+    cocktailApp.fadeOut(cocktailApp.instructionList, 5);
+    cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
+})
 
 // eventListener for Let's Make This button:
 cocktailApp.revealButton.addEventListener("click", function () {
