@@ -344,12 +344,54 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
         if (jsonResult.drinks === null) {
             cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
             cocktailApp.fadeIn(cocktailApp.error);
-            cocktailApp.error.scrollIntoView({ behavior: "smooth" }); 
+            cocktailApp.error.scrollIntoView({ behavior: "smooth"},); 
         } else {
             cocktailApp.fadeOut(cocktailApp.error, 5);
             const drink = jsonResult.drinks[0];
             // Update UI to show the drink recipe
             cocktailApp.showDrinkPreview(drink);
+            cocktailApp.fadeOut(cocktailApp.buttonContainer, 1);
+            fetch(cocktailApp.recipeUrl)
+                .then((response) => {
+                    return response.json();
+                }).then((jsonResult) => {
+                    const drinkDetails = jsonResult.drinks[0];
+                    // make an array from the returned object so that we can loop through them:
+                    const newArray = Object.keys(drinkDetails);
+                    // Reset the ingredients and measurements arrays
+                    cocktailApp.ingredients = [];
+                    cocktailApp.measurements = [];
+                    // establish ingredients and measurements for current drink:
+                    cocktailApp.parseArray(newArray, cocktailApp.ingredients, "strIngredient", drinkDetails);
+                    cocktailApp.parseArray(newArray, cocktailApp.measurements, "strMeasure", drinkDetails);
+                    // reset recipe container content:
+                    cocktailApp.resetRecipeContainer();
+                    // print instructions to page
+                    document.querySelector('.instructionList').textContent = drinkDetails.strInstructions;
+                    // print ingredients & measurements to page
+                    const ingredientList = document.querySelector(".ingredientList");
+                    cocktailApp.ingredients.forEach((ingredient, index) => {
+                        const measurement = cocktailApp.measurements[index];
+                        const listElement = document.createElement('li');
+                        const measurementSpan = document.createElement('span');
+                        measurementSpan.textContent = measurement;
+                        measurementSpan.classList.add('measurements');
+                        listElement.appendChild(measurementSpan);
+                        const ingredientText = document.createTextNode(` ${ingredient}`);
+                        listElement.appendChild(ingredientText);
+                        // <li><span class="measurements">2 oz</span> Rum</li>
+                        ingredientList.appendChild(listElement);
+                    })
+                    // TimeOut for styling purposes ---
+                    // Allows button container to leave page before instructions load in to avoid content jumping on the page
+                    setTimeout(function () {
+                        cocktailApp.fadeIn(cocktailApp.recipeContainer, 10);
+                        cocktailApp.fadeIn(cocktailApp.instructionList, 15);
+                        cocktailApp.fadeIn(cocktailApp.ingredientList, 15);
+                    }, 100)
+                    // hide buttonContainer
+                    // show recipe section
+                });
         }
     });
     cocktailApp.searchInput.value = "";
