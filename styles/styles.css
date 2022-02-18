@@ -620,6 +620,10 @@ header .wrapper .cocktailForm h1 {
           box-shadow: 1px 1px 0px #e4ae5d;
 }
 
+.searchContainer .fa-magnifying-glass {
+  display: none;
+}
+
 .searchContainer {
   text-align: right;
 }
@@ -627,14 +631,15 @@ header .wrapper .cocktailForm h1 {
 .navMainSearch {
   display: inline-block;
   position: relative;
+  margin: 1rem 1.5rem;
+  width: 20rem;
 }
 
 .searchInputField {
   border: 2px solid black;
-  width: 20rem;
+  width: 100%;
   padding: 0.6rem;
   border-radius: 1rem;
-  margin-top: 1rem;
 }
 
 ::-webkit-input-placeholder {
@@ -664,8 +669,8 @@ header .wrapper .cocktailForm h1 {
   height: 1rem;
   padding: 12px;
   position: absolute;
-  right: 1.25rem;
-  top: 1.7rem;
+  right: 1.24rem;
+  top: 0.8rem;
   border: none;
 }
 
@@ -762,6 +767,18 @@ header .wrapper .cocktailForm h1 {
   }
 }
 @media (max-width: 700px) {
+  .searchContainer .fa-magnifying-glass {
+    display: block;
+    color: white;
+    margin: 0.5rem 1rem;
+    font-size: 2rem;
+  }
+
+  .navMainSearch {
+    display: none;
+    width: 90%;
+  }
+
   header .wrapper .imageContainer {
     bottom: -80px;
   }

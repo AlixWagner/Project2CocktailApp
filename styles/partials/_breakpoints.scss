@@ -83,6 +83,22 @@
 }
 
 @media (max-width:700px) {
+
+.searchContainer {
+    .fa-magnifying-glass {
+        display: block;
+        color: white;
+        margin: 0.5rem 1rem;
+        font-size: 2rem; 
+    }
+}
+
+.navMainSearch {
+    display: none;
+    width: 90%;
+}
+
+
     header {
         .wrapper {
             .imageContainer {

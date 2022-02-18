@@ -104,20 +104,27 @@
 
 // Search bar 
 .searchContainer {
+    .fa-magnifying-glass {
+        display: none; 
+    }
+}
+
+.searchContainer {
     text-align: right;
 }
 
 .navMainSearch {
     display: inline-block;
     position: relative;
+    margin: 1rem 1.5rem;
+    width: 20rem;
 }
 
 .searchInputField {
     border: 2px solid black;
-    width: 20rem;
+    width: 100%;
     padding: 0.6rem; 
     border-radius: 1rem; 
-    margin-top: 1rem; 
 }
 
 ::placeholder{
@@ -131,8 +138,8 @@
     height: 1rem;
     padding: 12px;
     position: absolute;
-    right: 1.25rem;
-    top: 1.7rem;
+    right: 1.24rem;
+    top: 0.8rem;
     border: none;
 }
 
