@@ -72,6 +72,9 @@
             width: 80%;
         }
     }
+    .error {
+        margin-top: 30px;
+    }
 }
 
 @media (max-width:900px) {
@@ -89,22 +92,18 @@
 }
 
 @media (max-width:700px) {
-
-.searchContainer {
-    .fa-magnifying-glass {
-        display: block;
-        color: white;
-        margin: 0.5rem 1rem;
-        font-size: 2rem; 
+    .searchContainer {
+        .fa-magnifying-glass {
+            display: block;
+            color: white;
+            margin: 0.5rem 1rem;
+            font-size: 2rem; 
+        }
     }
-}
-
-.navMainSearch {
-    display: none;
-    width: 90%;
-}
-
-
+    .navMainSearch {
+        display: none;
+        width: 90%;
+    }
     header {
         .wrapper {
             .imageContainer {
@@ -112,6 +111,7 @@
             }
             .cocktailForm {
                 h1 {
+                    padding-top: 10px;
                     text-shadow: 2px 1px $secondary;
                 }
             }
@@ -165,6 +165,9 @@
             }
         }
     }
+    .error {
+        margin-top: 90px;
+    }
 }
 
 @media (max-width:560px) {
@@ -213,5 +216,8 @@
                 align-self: center;
             }
         }
+    }
+    .error {
+        margin-top: 0px;
     }
 }

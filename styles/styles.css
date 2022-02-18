@@ -760,6 +760,10 @@ header .wrapper .cocktailForm h1 {
   .results .buttonContainer {
     width: 80%;
   }
+
+  .error {
+    margin-top: 30px;
+  }
 }
 @media (max-width: 900px) {
   header .wrapper {
@@ -788,6 +792,7 @@ header .wrapper .cocktailForm h1 {
     bottom: -80px;
   }
   header .wrapper .cocktailForm h1 {
+    padding-top: 10px;
     text-shadow: 2px 1px #6a8ca9;
   }
 
@@ -843,6 +848,10 @@ header .wrapper .cocktailForm h1 {
             transform: none;
     -webkit-box-shadow: none;
             box-shadow: none;
+  }
+
+  .error {
+    margin-top: 90px;
   }
 }
 @media (max-width: 560px) {
@@ -902,5 +911,9 @@ header .wrapper .cocktailForm h1 {
     margin: 20px 0;
     -ms-flex-item-align: center;
         align-self: center;
+  }
+
+  .error {
+    margin-top: 0px;
   }
 }
