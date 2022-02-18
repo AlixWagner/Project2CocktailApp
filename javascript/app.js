@@ -243,7 +243,7 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
 
-    const searchTerm = cocktailApp.searchInput.value;
+    const searchTerm = cocktailApp.searchInput.value.replaceAll(" ", "_");
     cocktailApp.searchUrl.search = new URLSearchParams({
         s: searchTerm
     });
