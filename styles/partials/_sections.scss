@@ -46,12 +46,9 @@ ul li {
         margin-bottom: 10px;
     }
     span {
-        cursor: pointer;
         display: inline-block;
         margin-top: 10px;
         color: $quaternary;
-        transition: transform 0.3s, text-shadow 0.4s;
-        text-shadow: 1px 1px $secondary;
     }
 }
 .results {

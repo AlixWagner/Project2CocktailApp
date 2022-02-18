@@ -378,15 +378,9 @@ ul li {
   margin-bottom: 10px;
 }
 .error span {
-  cursor: pointer;
   display: inline-block;
   margin-top: 10px;
   color: #23293b;
-  -webkit-transition: text-shadow 0.4s, -webkit-transform 0.3s;
-  transition: text-shadow 0.4s, -webkit-transform 0.3s;
-  transition: transform 0.3s, text-shadow 0.4s;
-  transition: transform 0.3s, text-shadow 0.4s, -webkit-transform 0.3s;
-  text-shadow: 1px 1px #6a8ca9;
 }
 
 .results {
@@ -827,12 +821,6 @@ header .wrapper .cocktailForm h1 {
             transform: none;
     -webkit-box-shadow: none;
             box-shadow: none;
-  }
-
-  .error span:hover, .error span:focus {
-    -webkit-transform: none;
-            transform: none;
-    text-shadow: 1px 1px #6a8ca9;
   }
 }
 @media (max-width: 560px) {

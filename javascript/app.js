@@ -158,7 +158,8 @@ cocktailApp.chooseDrink = function (event) {
                 return response.json();
             }).then((jsonResult) => {
                 if (jsonResult.drinks === "None Found") {
-                    cocktailApp.fadeIn(cocktailApp.error); 
+                    cocktailApp.fadeIn(cocktailApp.error);
+                    cocktailApp.error.scrollIntoView({ behavior: "smooth" });
                 } else {
                     cocktailApp.fadeOut(cocktailApp.error, 5);
                     cocktailApp.drinksArray = [];
@@ -319,11 +320,9 @@ cocktailApp.revealButton.addEventListener("click", function () {
 // eventListener for search form submit:
 cocktailApp.searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
-
     cocktailApp.fadeOut(cocktailApp.recipeContainer, 5);
     cocktailApp.fadeOut(cocktailApp.ingredientList, 5);
     cocktailApp.fadeOut(cocktailApp.instructionList, 5);
-
     const searchTerm = cocktailApp.searchInput.value.replaceAll(" ", "_");
     cocktailApp.searchUrl.search = new URLSearchParams({
         s: searchTerm
@@ -332,7 +331,9 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
         return response.json();
     }).then((jsonResult) => {
         if (jsonResult.drinks === null) {
-            cocktailApp.fadeIn(cocktailApp.error); 
+            cocktailApp.fadeOut(cocktailApp.resultsContainer, 5);
+            cocktailApp.fadeIn(cocktailApp.error);
+            cocktailApp.error.scrollIntoView({ behavior: "smooth" }); 
         } else {
             cocktailApp.fadeOut(cocktailApp.error, 5);
             const drink = jsonResult.drinks[0];
@@ -341,7 +342,3 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
         }
     });
 });
-// eventListener for scroll to top:
-cocktailApp.span.addEventListener("click", function(e) {
-    cocktailApp.searchForm.scrollIntoView({ behavior: "smooth" })
-})

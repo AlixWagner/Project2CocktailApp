@@ -143,15 +143,6 @@
             }
         }
     }
-    .error {
-        span {
-            &:hover,
-            &:focus {
-                transform: none;
-                text-shadow: 1px 1px $secondary;
-            }
-        }
-    }
 }
 
 @media (max-width:560px) {
