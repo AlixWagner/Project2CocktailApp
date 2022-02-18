@@ -500,7 +500,13 @@ header .wrapper .cocktailForm h1 {
   color: #e6ebec;
 }
 .formSection .alcoholSelection select {
-  margin: 20px 0;
+  margin: 10px 0;
+}
+.formSection .alcoholSelection .otherAlcoholLabel {
+  opacity: 0;
+}
+.formSection .alcoholSelection .otherAlcoholSelect {
+  opacity: 0;
 }
 .formSection .toggleBox {
   display: -webkit-box;

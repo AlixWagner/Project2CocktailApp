@@ -9,7 +9,13 @@
             color: $offWhite;
         }
         select {
-            margin: 20px 0;
+            margin: 10px 0;
+        }
+        .otherAlcoholLabel {
+            opacity: 0;
+        }
+        .otherAlcoholSelect {
+            opacity: 0;
         }
     }
     .toggleBox {
