@@ -344,6 +344,10 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
         }
     });
     cocktailApp.searchInput.value = "";
+    if (mediaQuery.matches) {
+        document.querySelector(".navMainSearch").style.display = "none";
+        searchIcon.style.display = "block";
+    }
 });
 
 //Click search icon, display input 
