@@ -86,6 +86,7 @@ cocktailApp.fadeIn = function(element, interval) {
 cocktailApp.selectorFadeIn = function (element, interval) {
     let opacity = 0
     element.style.opacity = opacity;
+    element.disabled = false;
     const fade = setInterval(function () {
         if (opacity >= 1) {
             clearInterval(fade);
@@ -117,6 +118,7 @@ cocktailApp.selectorFadeOut = function (element, interval) {
         }
         opacity = opacity - 0.1
         element.style.opacity = opacity;
+        element.disabled = true;
     }, interval);
 };
 // method to print drink name and image to page:
@@ -341,9 +343,6 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
             cocktailApp.showDrinkPreview(drink);
         }
     });
-<<<<<<< HEAD
-});
-=======
     cocktailApp.searchInput.value = "";
 });
 
@@ -353,4 +352,3 @@ searchIcon.addEventListener("click", function() {
     document.querySelector(".navMainSearch").style.display = "inline-block";
     searchIcon.style.display = "none";
 });
->>>>>>> da89f1bb1c66112560e7816fce58bdbe15289e4b
