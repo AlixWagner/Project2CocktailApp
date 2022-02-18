@@ -352,3 +352,15 @@ searchIcon.addEventListener("click", function() {
     document.querySelector(".navMainSearch").style.display = "inline-block";
     searchIcon.style.display = "none";
 });
+
+
+const mediaQuery = window.matchMedia("(max-width: 700px)")
+
+if (mediaQuery.matches) {
+    document.addEventListener("click", (event) => {
+        if (event.target !== cocktailApp.searchButton && event.target !== cocktailApp.searchInput && event.target !== searchIcon) {
+            document.querySelector(".navMainSearch").style.display = "none";
+            searchIcon.style.display = "block";
+        }
+    })
+}

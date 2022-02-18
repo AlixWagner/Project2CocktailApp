@@ -483,7 +483,7 @@ footer img {
 header .wrapper {
   width: 90%;
   max-width: 1250px;
-  margin: 40px auto;
+  margin: 20px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -677,6 +677,7 @@ header .wrapper .cocktailForm h1 {
 @media (max-width: 1020px) {
   header .wrapper {
     position: relative;
+    margin: 10px auto;
   }
   header .wrapper .imageContainer {
     position: absolute;
@@ -761,6 +762,10 @@ header .wrapper .cocktailForm h1 {
   }
 }
 @media (max-width: 900px) {
+  header .wrapper {
+    margin: 0 auto;
+  }
+
   .formSection .alcoholSelection {
     width: 50%;
     margin-left: 0;

@@ -3,6 +3,7 @@
     header {
         .wrapper {
             position: relative;
+            margin: 10px auto;
             .imageContainer {
                 position: absolute;
                 width: 360px;
@@ -74,6 +75,11 @@
 }
 
 @media (max-width:900px) {
+    header {
+        .wrapper {
+            margin: 0 auto;
+        }
+    }
     .formSection {
         .alcoholSelection {
             width: 50%;
