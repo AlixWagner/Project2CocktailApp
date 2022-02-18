@@ -36,6 +36,21 @@ ul li {
         }
     }
 }
+.error {
+    display: none;
+    padding: 30px 6%; 
+    background: $primary;
+    box-shadow: 5px 5px 0px $accent;
+    border-radius: 5px;
+    p {
+        margin-bottom: 10px;
+    }
+    span {
+        display: inline-block;
+        margin-top: 10px;
+        color: $quaternary;
+    }
+}
 .results {
     display: none;
     .resultsContainer {
@@ -57,6 +72,8 @@ ul li {
         }
     }
     .drinkName{
+        // min-width to make sure the before element never goes onto 2 lines:
+        min-width: 100px;
         padding: 20px 20px 20px 0;
         position: relative;
         &::before {
@@ -80,6 +97,7 @@ ul li {
         transition: transform 0.2s, box-shadow 0.2s;
         border-radius: 5px;
         padding: 7px;
+        color: $quaternary;
         border: 3px solid $secondary; 
         &.reveal {
             background-color: $accent;
