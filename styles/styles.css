@@ -810,12 +810,18 @@ header .wrapper .cocktailForm h1 {
             box-shadow: none;
     background-color: #e4ae5d;
     cursor: pointer;
+    -webkit-transition: background-color 0.6s, border 0.6s;
+    transition: background-color 0.6s, border 0.6s;
   }
   .formSection .submit:hover, .formSection .submit:focus {
     -webkit-box-shadow: none;
             box-shadow: none;
     -webkit-transform: none;
             transform: none;
+  }
+  .formSection .submit:focus {
+    background-color: #6a8ca9;
+    border: 4px solid #e6ebec;
   }
   .formSection .submit:active {
     -webkit-transform: none;
@@ -835,6 +841,8 @@ header .wrapper .cocktailForm h1 {
     width: 100%;
   }
   .results .buttonContainer button {
+    -webkit-transition: background-color 0.6s, border 0.6s;
+    transition: background-color 0.6s, border 0.6s;
     cursor: pointer;
   }
   .results .buttonContainer button:hover, .results .buttonContainer button:focus {
@@ -842,6 +850,10 @@ header .wrapper .cocktailForm h1 {
             box-shadow: none;
     -webkit-transform: none;
             transform: none;
+  }
+  .results .buttonContainer button:focus {
+    background-color: #6a8ca9;
+    border: 3px solid #e6ebec;
   }
   .results .buttonContainer button:active {
     -webkit-transform: none;
