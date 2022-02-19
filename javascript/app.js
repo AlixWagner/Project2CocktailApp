@@ -402,6 +402,12 @@ searchIcon.addEventListener("click", function() {
     document.querySelector(".navMainSearch").style.display = "inline-block";
     searchIcon.style.display = "none";
 });
+searchIcon.addEventListener("keydown", function (e) {
+    if (e.keyCode = 13) {
+        document.querySelector(".navMainSearch").style.display = "inline-block";
+        searchIcon.style.display = "none";
+    }
+});
 
 
 const mediaQuery = window.matchMedia("(max-width: 700px)")
