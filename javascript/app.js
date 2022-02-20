@@ -1,5 +1,3 @@
-// Create an init method 
-
 // App Object:
 const cocktailApp = {};
 // Create an init method 
