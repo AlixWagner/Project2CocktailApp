@@ -320,8 +320,6 @@ cocktailApp.revealButton.addEventListener("click", function () {
                 cocktailApp.fadeIn(cocktailApp.ingredientList, 15);
                 cocktailApp.recipeContainer.scrollIntoView({ behavior: "smooth" });
             }, 100)
-            // hide buttonContainer
-            // show recipe section
         });
 });
 // eventListener for search form submit:
@@ -379,28 +377,32 @@ cocktailApp.searchForm.addEventListener("submit", function (e) {
                 cocktailApp.fadeIn(cocktailApp.instructionList, 15);
                 cocktailApp.fadeIn(cocktailApp.ingredientList, 15);
             }, 100)
-            // hide buttonContainer
-            // show recipe section
         }
     });
+    // reset search input to empty:
     cocktailApp.searchInput.value = "";
+    // when on mobile/tablet(below 700px) hide search bar again after search:
     if (mediaQuery.matches) {
         document.querySelector(".navMainSearch").style.display = "none";
         searchIcon.style.display = "block";
     }
 });
 
-//Click search icon, display input 
+//Click search icon, display search text input:
 const searchIcon = document.querySelector(".fa-magnifying-glass");
+// for mouse/touch screen:
 searchIcon.addEventListener("click", function() {
     document.querySelector(".navMainSearch").style.display = "inline-block";
     searchIcon.style.display = "none";
 });
+// for keyboard:
 searchIcon.addEventListener("keydown", function (e) {
+    // listen for enter key:
     if (e.keyCode = 13) {
         document.querySelector(".navMainSearch").style.display = "inline-block";
         searchIcon.style.display = "none";
     }
 });
+
 
 cocktailApp.init();
